@@ -1,0 +1,42 @@
+.sched-items { display:flex; flex-direction:column; gap:8px; margin-bottom:12px; }
+.sched-item { display:flex; gap:8px; align-items:center; }
+.sched-item input {
+  flex:1;
+  font-family:inherit; font-size:14.5px; font-weight:600;
+  color:var(--text); background:#fff;
+  border:2px solid var(--line);
+  border-radius:11px; padding:10px 12px;
+  outline:none;
+  transition:border-color .2s, box-shadow .2s;
+}
+.sched-item input:focus {
+  border-color:#9db2c9;
+  box-shadow:0 0 0 3px rgba(148,163,184,.16);
+}
+.del-item {
+  flex:none; width:34px; height:34px;
+  display:grid; place-items:center;
+  font-size:13px; font-weight:700;
+  color:#dc2626; background:#fee2e2;
+  border:none; border-radius:10px;
+  cursor:pointer;
+  transition:background .2s;
+}
+.del-item:hover { background:#fecaca; }
+.add-item {
+  font-family:inherit; font-size:13.5px; font-weight:700;
+  color:#2563eb; background:#eff6ff;
+  border:none; border-radius:10px;
+  padding:9px 16px;
+  cursor:pointer;
+  transition:background .2s;
+}
+.add-item:hover { background:#dbeafe; }
+
+/* В режиме просмотра — как было */
+.sched-day ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
+.sched-day li { display:flex; align-items:center; gap:11px; font-weight:600; }
+.sched-day li::before {
+  content:""; flex:none; width:9px; height:9px; border-radius:50%;
+  background:linear-gradient(145deg,var(--c1),var(--c2));
+}
