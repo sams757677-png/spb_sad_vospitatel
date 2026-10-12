@@ -1,0 +1,4078 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>СП ОДО ГБОУ — Старший воспитатель</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ================= ЗАЩИТА ОТ КОПИРОВАНИЯ ================= */
+    html, body {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+    input, textarea, select, [contenteditable="true"] {
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+    }
+    img, svg, .emoji, .banner-emoji, .logo-icon {
+        -webkit-user-drag: none;
+        user-drag: none;
+    }
+    body ::selection { background: transparent; }
+    input::selection, textarea::selection { background: #b3d4fc; color: inherit; }
+
+    body {
+        font-family: 'Segoe UI', 'Comic Sans MS', Tahoma, sans-serif;
+        background: linear-gradient(135deg, #fef9e7 0%, #e8f4f8 50%, #f0e6f6 100%);
+        min-height: 100vh;
+        color: #2c3e50;
+    }
+
+    header {
+        background: linear-gradient(135deg, #4a90e2 0%, #7b68ee 100%);
+        padding: 30px 40px;
+        box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3);
+        position: relative; overflow: hidden;
+    }
+    header::before {
+        content: "🌈"; position: absolute; font-size: 180px; opacity: 0.08;
+        top: -50px; right: 50px; transform: rotate(-15deg);
+    }
+    header::after {
+        content: "🎨"; position: absolute; font-size: 140px; opacity: 0.08;
+        bottom: -40px; left: 30px;
+    }
+    .header-content {
+        max-width: 1400px; margin: 0 auto;
+        display: flex; justify-content: space-between; align-items: center;
+        position: relative; z-index: 2; flex-wrap: wrap; gap: 20px;
+    }
+    .logo-block { display: flex; align-items: center; gap: 20px; }
+    .logo-icon {
+        width: 70px; height: 70px; background: rgba(255,255,255,0.25);
+        border-radius: 20px; display: flex; align-items: center; justify-content: center;
+        font-size: 38px; backdrop-filter: blur(10px);
+        border: 2px solid rgba(255,255,255,0.4);
+        cursor: pointer; transition: transform .2s; flex: none;
+    }
+    .logo-icon:hover { transform: scale(1.05); }
+    .title-block h1 { color: #fff; font-size: 28px; font-weight: 700; letter-spacing: 0.5px; }
+    .title-block p { color: rgba(255,255,255,0.9); font-size: 15px; margin-top: 4px; }
+    .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+    .user-info {
+        display: flex; align-items: center; gap: 12px;
+        background: rgba(255,255,255,0.2); padding: 10px 20px;
+        border-radius: 50px; backdrop-filter: blur(10px);
+        border: 2px solid rgba(255,255,255,0.3);
+        cursor: pointer; color: #fff;
+        transition: background .2s, transform .2s;
+        font-family: inherit;
+    }
+    .user-info:hover { background: rgba(255,255,255,0.32); transform: translateY(-2px); }
+    .user-avatar {
+        width: 45px; height: 45px;
+        background: linear-gradient(135deg, #ffd93d, #ff9a3c);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        font-size: 22px; flex: none;
+    }
+    .user-info span { font-weight: 600; font-size: 15px; }
+    .user-info .lock { margin-left: 4px; font-size: 16px; opacity: 0.9; }
+
+    .logout-header-btn {
+        display: none; align-items: center; gap: 8px;
+        font-family: inherit; font-size: 14px; font-weight: 700; color: #fff;
+        background: rgba(220, 38, 38, 0.85);
+        border: 2px solid rgba(255,255,255,0.35);
+        border-radius: 50px; padding: 11px 20px; cursor: pointer;
+        backdrop-filter: blur(10px);
+        transition: background .2s, transform .2s;
+    }
+    .logout-header-btn:hover { background: rgba(220, 38, 38, 1); transform: translateY(-2px); }
+    .logout-header-btn.visible { display: inline-flex; }
+
+    main { max-width: 1400px; margin: 0 auto; padding: 50px 40px 80px; }
+    .section-title { text-align: center; margin-bottom: 15px; }
+    .section-title h2 { font-size: 36px; color: #2c3e50; font-weight: 800; margin-bottom: 10px; }
+    .section-title p { color: #7f8c8d; font-size: 17px; }
+
+    .groups-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 22px; margin-top: 50px;
+    }
+    .group-card {
+        position: relative; aspect-ratio: 1/1;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: 4px; padding: 20px; text-align: center; cursor: pointer; color: #fff;
+        border: none; border-radius: 30px;
+        background: linear-gradient(145deg, var(--c1), var(--c2));
+        box-shadow: 0 14px 28px -16px rgba(15,23,42,.65);
+        overflow: hidden;
+        transition: transform .28s cubic-bezier(.2,.8,.3,1), box-shadow .28s;
+        text-shadow: 0 2px 8px rgba(0,0,0,.22);
+        font-family: inherit; min-width: 0; min-height: 0;
+    }
+    .group-card::after {
+        content: ""; position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(255,255,255,.28), transparent 46%);
+        pointer-events: none;
+    }
+    .group-card:hover, .group-card:focus-visible {
+        transform: translateY(-9px) scale(1.02);
+        box-shadow: 0 30px 46px -22px rgba(15,23,42,.75); outline: none;
+    }
+    .group-card:active { transform: translateY(-4px) scale(1.01); }
+    .card-top, .card-bottom { display: contents; }
+    .group-card .emoji {
+        font-size: 58px; line-height: 1;
+        filter: drop-shadow(0 5px 10px rgba(0,0,0,.25));
+        max-width: 100%; display: block;
+    }
+    .group-card h3 {
+        font-size: 24px; font-weight: 800; letter-spacing: -.015em;
+        line-height: 1.15; margin-top: 10px; margin-bottom: 0;
+        padding: 0 6px; width: 100%; max-width: 100%;
+        overflow-wrap: anywhere; word-break: break-word; hyphens: auto;
+    }
+    .group-card .age {
+        font-size: 12.5px; font-weight: 700; letter-spacing: .1em;
+        text-transform: uppercase; opacity: .92; margin-top: 4px;
+        padding: 0 6px; width: 100%; max-width: 100%;
+        overflow-wrap: anywhere; word-break: break-word;
+    }
+    .card-link {
+        display: inline-flex; align-items: center; gap: 6px;
+        margin-top: 14px; padding: 6px 14px;
+        font-size: 12px; font-weight: 700; letter-spacing: .1em;
+        text-transform: uppercase; border-radius: 999px;
+        background: rgba(255,255,255,.26); backdrop-filter: blur(6px);
+        border: none; transition: background .2s;
+        max-width: 100%; white-space: nowrap;
+    }
+    .group-card:hover .card-link { background: rgba(255,255,255,.42); }
+
+    .c1  { --c1: #ff6b9d; --c2: #ff8e53; }
+    .c2  { --c1: #4facfe; --c2: #00f2fe; }
+    .c3  { --c1: #43e97b; --c2: #38f9d7; }
+    .c4  { --c1: #fa709a; --c2: #fee140; }
+    .c5  { --c1: #a18cd1; --c2: #fbc2eb; }
+    .c6  { --c1: #f093fb; --c2: #f5576c; }
+    .c7  { --c1: #43cea2; --c2: #185a9d; }
+    .c8  { --c1: #ff512f; --c2: #f09819; }
+    .c9  { --c1: #2193b0; --c2: #6dd5ed; }
+    .c10 { --c1: #7f7fd5; --c2: #86a8e7; }
+    .c11 { --c1: #11998e; --c2: #38ef7d; }
+    .c12 { --c1: #ff9966; --c2: #ff5e62; }
+    .c13 { --c1: #00b4db; --c2: #0083b0; }
+    .c14 { --c1: #134e5e; --c2: #71b280; }
+    .c15 { --c1: #ec008c; --c2: #fc6767; }
+    .c16 { --c1: #4568dc; --c2: #b06ab3; }
+
+    footer { text-align: center; padding: 30px; color: #95a5a6; font-size: 14px; }
+
+    .modal {
+        position: fixed; inset: 0; background: rgba(44,62,80,0.7);
+        backdrop-filter: blur(6px); display: none;
+        align-items: center; justify-content: center;
+        z-index: 100; padding: 20px;
+    }
+    .modal.active { display: flex; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .modal-content {
+        background: #fff; border-radius: 25px; padding: 40px;
+        max-width: 500px; width: 100%; text-align: center;
+        animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes slideUp {
+        from { transform: translateY(30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    .modal-content h3 { font-size: 26px; margin-bottom: 15px; color: #2c3e50; }
+    .modal-content p { color: #7f8c8d; margin-bottom: 25px; font-size: 16px; line-height: 1.6; }
+    .modal-close {
+        background: linear-gradient(135deg, #4a90e2, #7b68ee); color: #fff;
+        border: none; padding: 14px 40px; border-radius: 30px;
+        font-size: 16px; font-weight: 700; cursor: pointer;
+        transition: transform 0.2s; font-family: inherit;
+    }
+    .modal-close:hover { transform: scale(1.05); }
+
+    .group-page { max-width: 1400px; margin: 0 auto; padding: 30px 40px 80px; }
+
+    .back-btn {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-family: inherit; font-size: 15px; font-weight: 700;
+        color: #2c3e50; background: #fff; border: none;
+        border-radius: 16px; padding: 12px 20px; margin-bottom: 20px;
+        cursor: pointer; box-shadow: 0 10px 22px -16px rgba(15,23,42,.9);
+        transition: transform .2s;
+    }
+    .back-btn:hover { transform: translateX(-4px); }
+
+    .group-banner {
+        display: flex; align-items: center; gap: 20px;
+        padding: 26px 30px; border-radius: 28px; color: #fff;
+        background: linear-gradient(135deg, var(--c1), var(--c2));
+        box-shadow: 0 20px 40px -22px rgba(15,23,42,.7);
+        margin-bottom: 24px; text-shadow: 0 2px 8px rgba(0,0,0,.2);
+        position: relative; overflow: hidden;
+    }
+    .group-banner::after {
+        content: ""; position: absolute; right: -50px; top: -60px;
+        width: 200px; height: 200px; border-radius: 50%;
+        background: rgba(255,255,255,.16);
+    }
+    .group-banner .banner-emoji {
+        font-size: 54px; line-height: 1; position: relative; z-index: 1;
+        filter: drop-shadow(0 5px 10px rgba(0,0,0,.25));
+    }
+    .group-banner .banner-text { position: relative; z-index: 1; }
+    .group-banner h1 { font-size: 30px; font-weight: 800; letter-spacing: -.02em; }
+    .group-banner p { font-size: 15px; font-weight: 600; opacity: .92; margin-top: 4px; }
+
+    /* ================= ТАБЫ ================= */
+    .tabs {
+        display: flex; gap: 6px;
+        padding: 6px;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 12px 26px -20px rgba(15,23,42,.9);
+        margin-bottom: 14px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        cursor: grab;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: pan-y;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tabs.dragging { cursor: grabbing; }
+
+    .tab {
+        flex: 0 0 auto;
+        font-family: inherit; font-size: 15px; font-weight: 700;
+        color: #7f8c8d; background: transparent; border: none;
+        border-radius: 13px; padding: 11px 22px; cursor: pointer;
+        transition: color .2s, background .2s;
+        user-select: none; -webkit-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .tab:hover { color: #2c3e50; }
+    .tab.active {
+        color: #fff; background: linear-gradient(135deg, #4a90e2, #7b68ee);
+        box-shadow: 0 8px 18px -10px rgba(74,144,226,.9);
+    }
+
+    /* ================= ФИЛЬТР ПО МЕСЯЦАМ (под меню-табами) ================= */
+    .month-filter-wrap {
+        display: flex; align-items: center; gap: 10px;
+        margin: 0 0 18px;
+    }
+    .month-filter-wrap .mf-label {
+        flex: none;
+        font-size: 11px; font-weight: 800;
+        letter-spacing: .1em; text-transform: uppercase;
+        color: #7f8c8d; padding-left: 4px;
+        display: inline-flex; align-items: center; gap: 6px;
+    }
+    .month-filter {
+        flex: 1; min-width: 0;
+        display: flex; gap: 6px;
+        padding: 6px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 12px 26px -22px rgba(15,23,42,.9);
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+        cursor: grab;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: pan-y;
+    }
+    .month-filter::-webkit-scrollbar { display: none; }
+    .month-filter.dragging { cursor: grabbing; }
+
+    .month-chip {
+        flex: 0 0 auto;
+        display: inline-flex; align-items: center; gap: 6px;
+        font-family: inherit; font-size: 13px; font-weight: 700;
+        color: #64748b; background: #f1f5f9; border: none;
+        border-radius: 11px; padding: 8px 14px; cursor: pointer;
+        transition: color .2s, background .2s, box-shadow .2s, transform .15s;
+        user-select: none; -webkit-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        max-width: 260px;
+    }
+    .month-chip .mc-text {
+        overflow: hidden; text-overflow: ellipsis;
+        white-space: nowrap; max-width: 200px;
+    }
+    .month-chip .mc-cnt {
+        flex: none;
+        display: inline-flex; align-items: center; justify-content: center;
+        min-width: 20px; height: 20px; padding: 0 6px;
+        border-radius: 999px;
+        font-size: 11px; font-weight: 800;
+        background: rgba(15,23,42,.08);
+        color: inherit;
+    }
+    .month-chip:hover { color: #2c3e50; background: #e2e8f0; }
+    .month-chip.active {
+        color: #fff;
+        background: linear-gradient(135deg, var(--c1, #4a90e2), var(--c2, #7b68ee));
+        box-shadow: 0 8px 18px -10px rgba(74,144,226,.9);
+    }
+    .month-chip.active .mc-cnt {
+        background: rgba(255,255,255,.28);
+        color: #fff;
+    }
+    .month-chip:active { transform: scale(.97); }
+
+    .panel {
+        background: #fff; border-radius: 26px; padding: 26px;
+        box-shadow: 0 26px 50px -36px rgba(15,23,42,.9);
+    }
+
+    .empty-msg {
+        text-align: center; padding: 50px 20px; color: #7f8c8d;
+        font-weight: 600; font-size: 15px;
+    }
+    .empty-msg .em-emoji { font-size: 36px; display: block; margin-bottom: 10px; }
+    .empty-msg .em-reset {
+        display: inline-block; margin-top: 14px;
+        font-family: inherit; font-size: 13px; font-weight: 700;
+        color: #2563eb; background: #eff6ff; border: none;
+        border-radius: 10px; padding: 9px 16px; cursor: pointer;
+        transition: background .2s;
+    }
+    .empty-msg .em-reset:hover { background: #dbeafe; }
+
+    /* ================= РАСПИСАНИЕ ================= */
+    .sched { display: grid; gap: 14px; }
+    .sched-day {
+        padding: 18px 20px; border-radius: 18px;
+        background: #f9fbfd; border: 2px solid #e8edf4;
+    }
+    .sched-day h4 {
+        font-size: 12.5px; font-weight: 800; letter-spacing: .1em;
+        text-transform: uppercase; color: #7f8c8d; margin-bottom: 12px;
+        padding-bottom: 10px; border-bottom: 1px solid #e8edf4;
+    }
+    .sched-day ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .sched-day li {
+        display: flex; align-items: center; gap: 11px;
+        font-weight: 600; font-size: 15px; color: #2c3e50;
+        line-height: 1.4; overflow-wrap: anywhere;
+    }
+    .sched-day li::before {
+        content: ""; flex: none; width: 9px; height: 9px; border-radius: 50%;
+        background: linear-gradient(145deg, var(--c1), var(--c2));
+    }
+    .sched-day .empty-inline {
+        color: #b0b8c4; font-size: 14px; font-weight: 500; font-style: italic;
+    }
+
+    /* ================= ТЕМЫ НЕДЕЛИ — табличный вид ================= */
+    .week-list { display: flex; flex-direction: column; gap: 22px; }
+
+    .week-card {
+        border: 2px solid #e8edf4; border-radius: 18px;
+        background: #fff; overflow: hidden;
+        box-shadow: 0 12px 26px -20px rgba(15,23,42,.9);
+    }
+    .week-header {
+        background: linear-gradient(135deg, var(--c1), var(--c2));
+        color: #fff; padding: 14px 18px;
+        text-shadow: 0 1px 4px rgba(0,0,0,.15);
+    }
+    .week-header .month {
+        font-size: 17px; font-weight: 800; letter-spacing: .12em;
+        text-transform: uppercase; text-align: center;
+        margin-bottom: 8px;
+    }
+    .week-header .week-row {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 12px; flex-wrap: wrap;
+    }
+    .week-header .week-num {
+        font-size: 15px; font-weight: 800; letter-spacing: .08em;
+        text-transform: uppercase;
+    }
+    .week-header .week-dates {
+        font-size: 15px; font-weight: 700; letter-spacing: .04em;
+    }
+
+    .week-section {
+        display: grid; grid-template-columns: 180px 1fr;
+        border-top: 1px solid #e8edf4;
+    }
+    .week-section:first-of-type { border-top: none; }
+    .week-label {
+        background: #f9fbfd; padding: 14px 16px;
+        font-size: 13px; font-weight: 800; letter-spacing: .04em;
+        color: #4a5568; border-right: 1px solid #e8edf4;
+        display: flex; align-items: flex-start;
+        text-transform: uppercase;
+    }
+    .week-content {
+        padding: 14px 18px; font-size: 15px; line-height: 1.55;
+        color: #2c3e50; overflow-wrap: anywhere;
+        white-space: pre-wrap;
+    }
+
+    .week-content .age-block {
+        display: grid; grid-template-columns: 160px 1fr;
+        border: 1px solid #e8edf4; border-radius: 10px;
+        margin-bottom: 10px; overflow: hidden;
+    }
+    .week-content .age-block:last-child { margin-bottom: 0; }
+    .week-content .age-name {
+        background: #f1f5f9; padding: 10px 12px;
+        font-size: 13.5px; font-weight: 800; color: #2c3e50;
+        border-right: 1px solid #e8edf4;
+        display: flex; align-items: flex-start;
+    }
+    .week-content .age-body {
+        padding: 10px 14px;
+    }
+    .week-content .age-sub {
+        font-size: 14.5px; font-weight: 800; color: #2c3e50;
+        margin-bottom: 6px;
+    }
+    .week-content .age-desc {
+        font-size: 14px; color: #4a5568; line-height: 1.55;
+        white-space: pre-wrap;
+    }
+    .week-content .empty-inline {
+        color: #b0b8c4; font-size: 13.5px; font-style: italic;
+    }
+
+    /* ================= РЕЖИМ ДНЯ ================= */
+    .routine-list { display: flex; flex-direction: column; gap: 8px; }
+    .routine-item {
+        display: flex; align-items: flex-start; gap: 14px;
+        padding: 12px 16px; background: #f9fbfd;
+        border: 2px solid #e8edf4; border-radius: 14px;
+        transition: border-color .2s;
+    }
+    .routine-item:hover { border-color: #cbd5e1; }
+    .routine-time {
+        flex: none; min-width: 110px;
+        font-size: 14px; font-weight: 800; color: #2c3e50;
+        background: linear-gradient(135deg, var(--c1), var(--c2));
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: .02em;
+    }
+    .routine-activity {
+        flex: 1; min-width: 0;
+        font-size: 15px; font-weight: 600; color: #2c3e50;
+        line-height: 1.4; overflow-wrap: anywhere;
+    }
+
+    /* ================= ХУДОЖ. ЛИТЕРАТУРА — таблица ================= */
+    .lit-months { display: flex; flex-direction: column; gap: 26px; }
+
+    .lit-month-title {
+        display: block;
+        padding: 14px 20px;
+        border-radius: 14px 14px 0 0;
+        background: linear-gradient(135deg, var(--c1), var(--c2));
+        color: #fff;
+        font-size: 17px;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        text-shadow: 0 1px 3px rgba(0,0,0,.2);
+    }
+
+    .lit-table-wrap {
+        overflow-x: auto;
+        border-radius: 0 0 16px 16px;
+        border: 2px solid #e8edf4;
+        border-top: none;
+        background: #fff;
+    }
+
+    .lit-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 720px;
+        font-size: 14px;
+    }
+
+    .lit-table thead th {
+        background: #f1f5f9;
+        color: #4a5568;
+        font-weight: 800;
+        font-size: 11.5px;
+        letter-spacing: .07em;
+        text-transform: uppercase;
+        text-align: left;
+        padding: 12px 14px;
+        border-right: 1px solid #e8edf4;
+        border-bottom: 2px solid #e8edf4;
+        vertical-align: middle;
+    }
+    .lit-table thead th:last-child { border-right: none; }
+
+    .lit-table tbody td {
+        padding: 12px 14px;
+        border-top: 1px solid #e8edf4;
+        border-right: 1px solid #e8edf4;
+        color: #2c3e50;
+        font-weight: 600;
+        line-height: 1.55;
+        vertical-align: top;
+        overflow-wrap: anywhere;
+    }
+    .lit-table tbody td:last-child { border-right: none; }
+    .lit-table tbody tr:nth-child(even) td { background: #f9fbfd; }
+    .lit-table tbody tr:hover td { background: #eff6ff; }
+
+    .lit-table .lit-num-cell {
+        text-align: center;
+        font-weight: 800;
+        color: #4a90e2;
+        width: 44px;
+    }
+
+    /* --- админ: редактор худ. литературы --- */
+    .lit-weeks-editor { display: flex; flex-direction: column; gap: 10px; }
+
+    .lit-week-edit {
+        display: grid;
+        grid-template-columns: 34px 34px 1fr 1.2fr 2fr 2fr 38px;
+        gap: 10px;
+        align-items: start;
+        padding: 12px;
+        background: #f9fbfd;
+        border: 2px solid #e8edf4;
+        border-radius: 12px;
+    }
+    .lit-week-edit .drag-handle,
+    .lit-week-edit .icon-btn { margin-top: 20px; }
+    .lit-week-edit .a-field { gap: 4px; margin: 0; }
+    .lit-week-edit .a-field label { font-size: 10px; }
+    .lit-week-edit .a-field input,
+    .lit-week-edit .a-field textarea {
+        font-size: 13.5px;
+        padding: 8px 10px;
+        border-radius: 9px;
+        min-height: 0;
+        background: #fff;
+        width: 100%;
+        font-family: inherit;
+        font-weight: 600;
+        color: #2c3e50;
+        border: 2px solid #e8edf4;
+        outline: none;
+    }
+    .lit-week-edit .a-field textarea {
+        min-height: 56px; resize: vertical; line-height: 1.45;
+    }
+    .lit-week-edit .a-field input:focus,
+    .lit-week-edit .a-field textarea:focus {
+        background: #fff; border-color: #9db2c9;
+        box-shadow: 0 0 0 3px rgba(148,163,184,.16);
+    }
+
+    .lit-week-num {
+        width: 32px; height: 32px; border-radius: 8px;
+        display: grid; place-items: center;
+        font-size: 13px; font-weight: 800; color: #fff;
+        background: linear-gradient(135deg, #4a90e2, #7b68ee);
+        margin-top: 20px;
+        flex: none;
+    }
+
+    @media (max-width: 900px) {
+        .lit-week-edit { grid-template-columns: 1fr; }
+        .lit-week-edit .drag-handle,
+        .lit-week-edit .lit-week-num,
+        .lit-week-edit .icon-btn { margin-top: 0; }
+    }
+
+    /* ================= УТРЕННИЙ КРУГ ================= */
+    .mc-list { display: flex; flex-direction: column; gap: 10px; }
+    .mc-item {
+        display: flex; gap: 14px; align-items: flex-start;
+        padding: 14px 16px; background: #f9fbfd;
+        border: 2px solid #e8edf4; border-radius: 14px;
+        transition: border-color .2s;
+    }
+    .mc-item:hover { border-color: #cbd5e1; }
+    .mc-step {
+        flex: none; width: 36px; height: 36px; border-radius: 50%;
+        display: grid; place-items: center;
+        font-size: 15px; font-weight: 800; color: #fff;
+        background: linear-gradient(135deg, var(--c1), var(--c2));
+        box-shadow: 0 6px 14px -8px rgba(15,23,42,.5);
+    }
+    .mc-body { flex: 1; min-width: 0; }
+    .mc-title { font-size: 15.5px; font-weight: 800; color: #2c3e50; line-height: 1.3; overflow-wrap: anywhere; }
+    .mc-desc {
+        font-size: 14.5px; color: #4a5568; line-height: 1.55; margin-top: 5px;
+        white-space: pre-wrap; overflow-wrap: anywhere;
+    }
+
+    /* ================= КАЛЕНДАРЬ ================= */
+    .cal-badge {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 8px 14px; border-radius: 999px;
+        background: #eff6ff; color: #2563eb;
+        font-size: 13px; font-weight: 700;
+        margin-bottom: 16px;
+    }
+    .cal-header {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 12px; margin-bottom: 18px; flex-wrap: wrap;
+    }
+    .cal-month-title {
+        font-size: 22px; font-weight: 800; color: #2c3e50;
+        letter-spacing: -.01em; text-transform: capitalize;
+    }
+    .cal-nav-btn {
+        width: 42px; height: 42px; display: grid; place-items: center;
+        border: none; border-radius: 12px; cursor: pointer;
+        background: #f1f5f9; color: #2c3e50;
+        font-size: 18px; font-weight: 700;
+        font-family: inherit; transition: background .2s;
+    }
+    .cal-nav-btn:hover { background: #e2e8f0; }
+    .cal-today-btn {
+        font-family: inherit; font-size: 13px; font-weight: 700;
+        color: #2563eb; background: #eff6ff; border: none;
+        border-radius: 10px; padding: 10px 16px; cursor: pointer;
+        transition: background .2s;
+    }
+    .cal-today-btn:hover { background: #dbeafe; }
+
+    .cal-grid {
+        display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;
+    }
+    .cal-dow {
+        text-align: center; font-size: 12px; font-weight: 800;
+        letter-spacing: .08em; text-transform: uppercase;
+        color: #7f8c8d; padding: 10px 4px;
+    }
+    .cal-day {
+        min-height: 100px; border-radius: 12px; padding: 8px;
+        background: #ffffff;
+        border: 2px solid #e8edf4;
+        display: flex; flex-direction: column; gap: 4px;
+        cursor: pointer;
+        transition: transform .15s, box-shadow .15s, border-color .15s, background .15s;
+        position: relative; overflow: hidden;
+    }
+    .cal-day:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 22px -12px rgba(15,23,42,.45);
+        border-color: #9db2c9;
+        background: #f9fbfd;
+    }
+    .cal-day.other-month { opacity: .38; background: #f8fafc; }
+    .cal-day.today {
+        border-color: #4a90e2;
+        box-shadow: inset 0 0 0 1px #4a90e2;
+    }
+    .cal-day.today .cal-day-num { color: #2563eb; }
+    .cal-day-num {
+        font-size: 14px; font-weight: 800; color: #2c3e50;
+        line-height: 1;
+    }
+    .cal-event {
+        font-size: 11.5px; font-weight: 800;
+        padding: 2px 6px 2px 8px;
+        border-radius: 6px;
+        background: transparent;
+        color: inherit;
+        line-height: 1.25;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        border-left: 3px solid currentColor;
+    }
+    .cal-event:hover { white-space: normal; }
+    .cal-more {
+        font-size: 10.5px; font-weight: 800;
+        color: #7f8c8d; text-align: right; margin-top: auto;
+    }
+    .cal-day.has-event { border-color: #cbd5e1; }
+    .cal-day.has-event:hover { border-color: #9db2c9; }
+
+    .cal-hint {
+        margin-top: 16px; padding: 14px 18px;
+        background: #eff6ff; border-radius: 14px;
+        font-size: 13.5px; color: #2563eb; font-weight: 600;
+        display: flex; align-items: center; gap: 8px;
+    }
+
+    .event-modal {
+        position: fixed; inset: 0; background: rgba(44,62,80,0.7);
+        backdrop-filter: blur(6px); display: none;
+        align-items: center; justify-content: center;
+        z-index: 150; padding: 20px;
+    }
+    .event-modal.active { display: flex; animation: fadeIn .25s ease; }
+    .event-box {
+        background: #fff; border-radius: 22px; padding: 28px;
+        max-width: 480px; width: 100%;
+        animation: slideUp .3s cubic-bezier(.175,.885,.32,1.275);
+        max-height: 92vh; overflow-y: auto;
+    }
+    .event-box h3 { font-size: 20px; font-weight: 800; margin-bottom: 6px; color: #2c3e50; }
+    .event-box .sub { font-size: 14px; color: #7f8c8d; margin-bottom: 18px; }
+    .event-box .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .event-box .field label {
+        font-size: 11px; font-weight: 800; color: #7f8c8d;
+        letter-spacing: .07em; text-transform: uppercase;
+    }
+    .event-box .field input[type="text"],
+    .event-box .field input[type="date"] {
+        font-family: inherit; font-size: 14.5px; font-weight: 600;
+        color: #2c3e50; background: #f9fbfd;
+        border: 2px solid #e8edf4; border-radius: 11px;
+        padding: 10px 12px; outline: none;
+        transition: border-color .2s, box-shadow .2s;
+    }
+    .event-box .field input[type="text"]:focus,
+    .event-box .field input[type="date"]:focus {
+        border-color: #9db2c9; box-shadow: 0 0 0 3px rgba(148,163,184,.16);
+    }
+
+    .palette { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .swatch {
+        width: 34px; height: 34px; border-radius: 9px;
+        border: 2px solid transparent; cursor: pointer;
+        transition: transform .15s, border-color .15s, box-shadow .15s;
+        position: relative;
+    }
+    .swatch:hover { transform: scale(1.1); }
+    .swatch.selected {
+        border-color: #2c3e50;
+        box-shadow: 0 0 0 3px rgba(44,62,80,.15);
+    }
+    .swatch.selected::after {
+        content: "✓";
+        position: absolute; inset: 0;
+        display: grid; place-items: center;
+        color: #fff; font-size: 16px; font-weight: 900;
+        text-shadow: 0 1px 3px rgba(0,0,0,.5);
+    }
+    .color-custom-wrap {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 4px 10px 4px 4px; border-radius: 9px;
+        background: #f1f5f9; font-size: 12px; font-weight: 700;
+        color: #2c3e50;
+    }
+    .color-custom-wrap input[type="color"] {
+        width: 34px; height: 34px; padding: 0;
+        border: 2px solid #e8edf4; border-radius: 9px;
+        cursor: pointer; background: transparent;
+    }
+
+    .color-preview-line {
+        margin-top: 10px; padding: 10px 12px;
+        background: #f9fbfd; border: 2px dashed #e8edf4;
+        border-radius: 11px;
+        font-size: 13.5px; font-weight: 800;
+        display: flex; align-items: center; gap: 8px;
+    }
+    .color-preview-line .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .color-preview-line .lbl-mini {
+        color: #7f8c8d; font-size: 11px; font-weight: 800;
+        letter-spacing: .07em; text-transform: uppercase; margin-right: 4px;
+    }
+
+    .event-list {
+        display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px;
+        max-height: 180px; overflow-y: auto;
+    }
+    .event-list .row {
+        display: flex; align-items: center; gap: 8px;
+        padding: 8px 10px; background: #f9fbfd;
+        border: 1px solid #e8edf4; border-radius: 10px;
+        font-size: 14px; font-weight: 700;
+    }
+    .event-list .row .txt { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+    .mini-btn {
+        font-family: inherit; font-size: 13px; font-weight: 700;
+        border: none; border-radius: 8px; padding: 6px 10px;
+        cursor: pointer; transition: background .2s;
+    }
+    .mini-btn.edit { background: #eff6ff; color: #2563eb; }
+    .mini-btn.edit:hover { background: #dbeafe; }
+    .mini-btn.del { background: #fee2e2; color: #dc2626; }
+    .mini-btn.del:hover { background: #fecaca; }
+
+    .event-box .actions {
+        display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px;
+    }
+    .event-box .btn {
+        font-family: inherit; font-size: 14px; font-weight: 700;
+        border: none; border-radius: 12px; padding: 12px 20px;
+        cursor: pointer; transition: transform .15s, filter .15s;
+    }
+    .event-box .btn.primary {
+        color: #fff;
+        background: linear-gradient(135deg, #4a90e2, #7b68ee);
+        box-shadow: 0 12px 22px -14px rgba(74,144,226,.95);
+    }
+    .event-box .btn.primary:hover { transform: translateY(-2px); filter: brightness(1.06); }
+    .event-box .btn.ghost { color: #2c3e50; background: #f1f5f9; }
+    .event-box .btn.ghost:hover { background: #e2e8f0; }
+
+    .login-overlay {
+        position: fixed; inset: 0; background: rgba(44,62,80,0.7);
+        backdrop-filter: blur(6px); display: none;
+        align-items: center; justify-content: center;
+        z-index: 200; padding: 20px;
+    }
+    .login-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+    .login-box {
+        background: #fff; border-radius: 25px; padding: 40px;
+        max-width: 420px; width: 100%; text-align: center;
+        animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 30px 60px -30px rgba(15,23,42,.5);
+    }
+    .login-icon {
+        width: 72px; height: 72px; margin: 0 auto 18px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 36px; border-radius: 50%;
+        background: linear-gradient(135deg, #4a90e2, #7b68ee); color: #fff;
+    }
+    .login-box h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+    .login-box > p { color: #7f8c8d; font-size: 15px; margin-bottom: 22px; }
+    .login-box input {
+        width: 100%; font-family: inherit; font-size: 15px;
+        padding: 14px 18px; border: 2px solid #e8edf4;
+        border-radius: 14px; outline: none;
+        transition: border-color .2s, box-shadow .2s;
+        margin-bottom: 12px;
+    }
+    .login-box input:focus { border-color: #9db2c9; box-shadow: 0 0 0 4px rgba(148,163,184,.16); }
+    .login-box .btn-primary {
+        width: 100%; font-family: inherit; font-size: 16px; font-weight: 700;
+        color: #fff; border: none; border-radius: 14px; padding: 15px;
+        cursor: pointer;
+        background: linear-gradient(135deg, #4a90e2, #7b68ee);
+        box-shadow: 0 14px 24px -14px rgba(74,144,226,.95);
+        transition: transform .2s, filter .2s;
+    }
+    .login-box .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.06); }
+    .login-error { color: #e74c3c; font-size: 14px; font-weight: 700; min-height: 20px; margin-top: 10px; }
+    .login-tip { margin-top: 16px; font-size: 13px; color: #95a5a6; }
+
+    .admin-main { max-width: 1400px; margin: 0 auto; padding: 40px 40px 80px; }
+    .admin-back {
+        display: inline-flex; align-items: center; gap: 6px;
+        font-family: inherit; font-size: 15px; font-weight: 700;
+        color: #2c3e50; background: #fff; border: none;
+        border-radius: 16px; padding: 12px 20px; margin-bottom: 20px;
+        cursor: pointer; box-shadow: 0 10px 22px -16px rgba(15,23,42,.9);
+        transition: transform .2s;
+    }
+    .admin-back:hover { transform: translateX(-4px); }
+    .admin-hero { text-align: center; margin-bottom: 26px; }
+    .admin-hero h2 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; }
+    .admin-hero p { color: #7f8c8d; margin-top: 8px; font-size: 16px; }
+
+    .admin-nav {
+        display: flex; gap: 8px; padding: 6px;
+        background: #fff; border-radius: 18px;
+        box-shadow: 0 12px 26px -20px rgba(15,23,42,.9);
+        margin-bottom: 22px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        cursor: grab;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: pan-y;
+    }
+    .admin-nav::-webkit-scrollbar { display: none; }
+    .admin-nav.dragging { cursor: grabbing; }
+    .admin-nav button {
+        flex: 0 0 auto;
+        font-family: inherit; font-size: 15px; font-weight: 700;
+        color: #7f8c8d; background: transparent; border: none;
+        border-radius: 13px; padding: 10px 22px; cursor: pointer;
+        transition: color .2s, background .2s;
+        user-select: none; -webkit-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .admin-nav button:hover { color: #2c3e50; }
+    .admin-nav button.active {
+        color: #fff; background: linear-gradient(135deg, #4a90e2, #7b68ee);
+    }
+
+    .admin-card {
+        background: #fff; border-radius: 22px; padding: 22px;
+        border-top: 5px solid #4a90e2;
+        box-shadow: 0 24px 44px -34px rgba(15,23,42,.9);
+        margin-bottom: 16px;
+    }
+    .admin-card-head {
+        display: flex; align-items: center; gap: 12px;
+        margin-bottom: 16px; padding-bottom: 14px;
+        border-bottom: 1px solid #e8edf4;
+    }
+    .admin-emoji {
+        font-size: 32px; line-height: 1; width: 52px; height: 52px;
+        border-radius: 14px; display: flex; align-items: center;
+        justify-content: center; background: #f1f5f9; flex: none;
+    }
+    .admin-name { flex: 1; font-size: 19px; font-weight: 800; min-width: 0; overflow-wrap: anywhere; }
+    .icon-btn {
+        flex: none; width: 38px; height: 38px; display: grid; place-items: center;
+        font-size: 15px; border: none; border-radius: 11px; cursor: pointer;
+        background: #f1f5f9; color: #2c3e50;
+        transition: background .2s; font-family: inherit;
+    }
+    .icon-btn:hover { background: #e2e8f0; }
+    .icon-btn.danger { color: #dc2626; background: #fee2e2; }
+    .icon-btn.danger:hover { background: #fecaca; }
+
+    .admin-fields {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 12px; margin-bottom: 16px;
+    }
+    .a-field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+    .a-field.wide { grid-column: 1 / -1; }
+    .a-field label {
+        font-size: 11px; font-weight: 800; color: #7f8c8d;
+        letter-spacing: .07em; text-transform: uppercase;
+    }
+    .a-field input, .a-field select, .a-field textarea {
+        width: 100%; font-family: inherit; font-size: 14.5px; font-weight: 600;
+        color: #2c3e50; background: #f9fbfd; border: 2px solid #e8edf4;
+        border-radius: 11px; padding: 10px 12px; outline: none;
+        transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    .a-field textarea {
+        min-height: 100px; resize: vertical; line-height: 1.6;
+        font-family: inherit;
+    }
+    .a-field textarea.tall { min-height: 180px; }
+    .a-field input:focus, .a-field select:focus, .a-field textarea:focus {
+        background: #fff; border-color: #9db2c9;
+        box-shadow: 0 0 0 3px rgba(148,163,184,.16);
+    }
+    .char-counter {
+        font-size: 12px; color: #95a5a6; text-align: right;
+        font-weight: 600; margin-top: -8px;
+    }
+    .color-row { display: flex; align-items: center; gap: 10px; }
+    .color-row select { flex: 1; }
+    .color-preview {
+        flex: none; width: 44px; height: 44px; border-radius: 11px;
+        border: 2px solid #e8edf4;
+        background: linear-gradient(145deg, var(--c1), var(--c2));
+    }
+
+    .age-edit-row {
+        display: grid;
+        grid-template-columns: 1fr 2fr auto;
+        gap: 10px; align-items: start;
+        padding: 12px; background: #f9fbfd;
+        border: 2px solid #e8edf4; border-radius: 12px;
+        margin-bottom: 10px;
+    }
+    .age-edit-row .a-field { gap: 4px; }
+    .age-edit-row .a-field label { font-size: 10px; }
+    .age-edit-row .del-age {
+        align-self: start; margin-top: 24px;
+    }
+    @media (max-width: 700px) {
+        .age-edit-row { grid-template-columns: 1fr; }
+        .age-edit-row .del-age { margin-top: 0; }
+    }
+
+    .admin-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .btn {
+        font-family: inherit; font-size: 14.5px; font-weight: 700;
+        border: none; border-radius: 13px; padding: 12px 22px;
+        cursor: pointer; transition: transform .15s, filter .15s, background .2s;
+    }
+    .btn.primary {
+        color: #fff;
+        background: linear-gradient(135deg, #4a90e2, #7b68ee);
+        box-shadow: 0 12px 22px -14px rgba(74,144,226,.95);
+    }
+    .btn.primary:hover { transform: translateY(-2px); filter: brightness(1.06); }
+    .btn.ghost { color: #2c3e50; background: #f1f5f9; }
+    .btn.ghost:hover { background: #e2e8f0; }
+    .btn.danger {
+        color: #fff;
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+    }
+    .btn.danger:hover { transform: translateY(-2px); filter: brightness(1.06); }
+    .save-info { font-size: 13px; font-weight: 700; color: #0D9488; }
+
+    .add-section {
+        background: #fff; border-radius: 22px; padding: 22px;
+        border-top: 5px solid #94A3B8;
+        box-shadow: 0 24px 44px -34px rgba(15,23,42,.9);
+        margin-bottom: 24px;
+    }
+    .add-section h3 { font-size: 17px; font-weight: 800; margin-bottom: 16px; }
+    .admin-section-title {
+        font-size: 18px; font-weight: 800; margin: 26px 0 14px;
+        letter-spacing: -0.01em;
+    }
+
+    .admin-footer-bar {
+        margin-top: 40px; padding: 20px; background: #fff;
+        border-radius: 20px; box-shadow: 0 20px 40px -30px rgba(15,23,42,.9);
+        text-align: center;
+    }
+    .admin-footer-bar p {
+        color: #7f8c8d; font-size: 14px; margin-bottom: 14px; font-weight: 600;
+    }
+
+    /* ================= DRAG & DROP СОРТИРОВКА ================= */
+    .drag-handle {
+        cursor: grab;
+        user-select: none; -webkit-user-select: none;
+        touch-action: none;
+        font-size: 15px; line-height: 1;
+        color: #94a3b8; background: #f1f5f9;
+        padding: 7px 8px; border-radius: 9px;
+        display: inline-flex; align-items: center; justify-content: center;
+        letter-spacing: -2px; flex: none;
+        transition: background .15s, color .15s;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .drag-handle:hover { background: #e2e8f0; color: #475569; }
+    .drag-handle:active { cursor: grabbing; }
+
+    .card-drag-handle {
+        position: absolute; top: 10px; left: 10px; z-index: 3;
+        background: rgba(255,255,255,.3); color: #fff;
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(255,255,255,.35);
+    }
+    .card-drag-handle:hover { background: rgba(255,255,255,.5); color: #fff; }
+
+    .sortable-placeholder {
+        border: 2px dashed #9db2c9;
+        border-radius: 16px;
+        background: rgba(148,163,184,.12);
+        box-sizing: border-box;
+        pointer-events: none;
+    }
+    .sortable-ghost {
+        border-radius: 16px;
+        box-shadow: 0 26px 50px -20px rgba(15,23,42,.55);
+        pointer-events: none;
+    }
+    .group-card { -webkit-user-drag: none; }
+
+    /* ================= МОБИЛЬНАЯ ВЕРСИЯ ================= */
+    @media (max-width: 768px) {
+        /* ===== HEADER ===== */
+        header { padding: 16px 14px; }
+        .header-content { gap: 12px; }
+        .logo-block { gap: 12px; }
+        .title-block h1 { font-size: 17px; line-height: 1.2; }
+        .title-block p { font-size: 11.5px; margin-top: 2px; }
+        .logo-icon { width: 48px; height: 48px; font-size: 24px; border-radius: 14px; }
+        .header-right { gap: 8px; }
+        .user-info { padding: 8px 14px; gap: 8px; }
+        .user-avatar { width: 36px; height: 36px; font-size: 18px; }
+        .user-info span { font-size: 13px; }
+        .user-info span.lock { font-size: 14px; }
+        .logout-header-btn { padding: 9px 14px; font-size: 13px; }
+        .logout-header-btn span.text { display: none; }
+
+        /* ===== MAIN ===== */
+        main, .group-page, .admin-main { padding: 22px 14px 60px; }
+        .section-title h2 { font-size: 22px; letter-spacing: -.02em; }
+        .section-title p { font-size: 13.5px; margin-top: 4px; }
+
+        /* ===== GROUP CARDS ===== */
+        .groups-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 24px;
+        }
+        .group-card { border-radius: 20px; padding: 14px 10px; }
+        .group-card .emoji { font-size: 34px; }
+        .group-card h3 { font-size: 15px; margin-top: 8px; padding: 0 2px; }
+        .group-card .age { font-size: 9px; letter-spacing: .05em; padding: 0 2px; margin-top: 3px; }
+        .card-link { font-size: 9.5px; padding: 5px 9px; margin-top: 9px; }
+        .card-drag-handle { top: 6px; left: 6px; padding: 4px 6px; font-size: 12px; }
+
+        /* ===== GROUP PAGE ===== */
+        .back-btn { font-size: 13.5px; padding: 10px 16px; border-radius: 14px; margin-bottom: 14px; }
+
+        .group-banner { padding: 16px 18px; gap: 12px; border-radius: 20px; margin-bottom: 16px; }
+        .group-banner .banner-emoji { font-size: 34px; }
+        .group-banner h1 { font-size: 18px; letter-spacing: -.01em; }
+        .group-banner p { font-size: 12.5px; margin-top: 2px; }
+
+        .tabs { padding: 5px; gap: 4px; border-radius: 15px; margin-bottom: 12px; }
+        .tab { font-size: 12.5px; padding: 9px 14px; border-radius: 11px; }
+
+        /* ===== ФИЛЬТР ПО МЕСЯЦАМ (мобильный) ===== */
+        .month-filter-wrap { margin-bottom: 14px; gap: 6px; }
+        .month-filter-wrap .mf-label { display: none; }
+        .month-filter { padding: 5px; gap: 5px; border-radius: 14px; }
+        .month-chip { font-size: 12px; padding: 7px 11px; border-radius: 9px; gap: 5px; }
+        .month-chip .mc-text { max-width: 130px; }
+        .month-chip .mc-cnt { min-width: 18px; height: 18px; font-size: 10px; padding: 0 5px; }
+
+        .panel { padding: 14px; border-radius: 18px; }
+
+        /* ===== SCHEDULE ===== */
+        .sched { gap: 10px; }
+        .sched-day { padding: 14px; border-radius: 14px; }
+        .sched-day h4 { font-size: 11px; margin-bottom: 10px; padding-bottom: 8px; }
+        .sched-day li { font-size: 13.5px; gap: 9px; }
+        .sched-day li::before { width: 7px; height: 7px; }
+
+        /* ===== WEEK THEMES ===== */
+        .week-list { gap: 16px; }
+        .week-card { border-radius: 14px; }
+        .week-header { padding: 12px 14px; }
+        .week-header .month { font-size: 14px; margin-bottom: 6px; letter-spacing: .1em; }
+        .week-header .week-num,
+        .week-header .week-dates { font-size: 12.5px; }
+        .week-section { grid-template-columns: 1fr; }
+        .week-label {
+            border-right: none; border-bottom: 1px solid #e8edf4;
+            padding: 8px 14px; font-size: 11px;
+        }
+        .week-content { padding: 12px 14px; font-size: 13.5px; }
+        .week-content .age-block { grid-template-columns: 1fr; border-radius: 8px; }
+        .week-content .age-name {
+            border-right: none; border-bottom: 1px solid #e8edf4;
+            padding: 8px 12px; font-size: 12.5px;
+        }
+        .week-content .age-body { padding: 8px 12px; }
+        .week-content .age-sub { font-size: 13px; }
+        .week-content .age-desc { font-size: 12.5px; }
+
+        /* ===== DAILY ROUTINE ===== */
+        .routine-list { gap: 6px; }
+        .routine-item {
+            padding: 10px 12px; gap: 8px;
+            border-radius: 12px;
+            flex-direction: column; align-items: stretch;
+        }
+        .routine-time {
+            min-width: 0; font-size: 12.5px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #e8edf4;
+        }
+        .routine-activity { font-size: 13px; }
+
+        /* ===== ART LITERATURE — карточки на мобильном ===== */
+        .lit-months { gap: 18px; }
+        .lit-month-title {
+            font-size: 13px; padding: 11px 14px;
+            border-radius: 12px 12px 0 0;
+        }
+        .lit-table-wrap {
+            border-radius: 0 0 14px 14px;
+            overflow: visible;
+            border: none;
+            background: transparent;
+        }
+        .lit-table {
+            min-width: 0;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 13px;
+        }
+        .lit-table thead { display: none; }
+        .lit-table tbody,
+        .lit-table tr,
+        .lit-table td { display: block; width: 100%; }
+        .lit-table tr {
+            background: #fff;
+            border: 2px solid #e8edf4;
+            border-radius: 14px;
+            margin: 10px 0 0;
+            padding: 14px 14px 12px;
+            position: relative;
+            box-shadow: 0 6px 16px -12px rgba(15,23,42,.5);
+        }
+        .lit-table tbody tr:nth-child(even) td,
+        .lit-table tbody tr:hover td { background: transparent !important; }
+        .lit-table td {
+            border: none !important;
+            padding: 0 !important;
+            background: transparent !important;
+        }
+        .lit-table td.lit-num-cell {
+            position: absolute;
+            top: 10px; right: 10px;
+            width: 26px; height: 26px;
+            border-radius: 8px;
+            display: grid; place-items: center;
+            background: linear-gradient(135deg, #4a90e2, #7b68ee);
+            color: #fff; font-size: 12px;
+            padding: 0; text-align: center;
+        }
+        .lit-table td:nth-child(2) {
+            font-size: 13.5px !important;
+            font-weight: 800 !important;
+            color: #2c3e50;
+            padding-right: 34px !important;
+            margin-bottom: 4px;
+        }
+        .lit-table td:nth-child(3) {
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            color: #4a5568;
+            margin-bottom: 10px;
+            padding-bottom: 10px !important;
+            border-bottom: 1px solid #e8edf4 !important;
+        }
+        .lit-table td[data-label]::before {
+            content: attr(data-label);
+            display: block;
+            font-size: 10px;
+            font-weight: 800;
+            color: #94a3b8;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .lit-table td:nth-child(4),
+        .lit-table td:nth-child(5) {
+            padding-top: 10px !important;
+            font-size: 12.5px;
+            line-height: 1.55;
+        }
+        .lit-table td:nth-child(4) { margin-bottom: 8px; }
+
+        /* ===== MORNING CIRCLE ===== */
+        .mc-list { gap: 8px; }
+        .mc-item { padding: 12px; gap: 10px; border-radius: 12px; }
+        .mc-step { width: 28px; height: 28px; font-size: 12px; }
+        .mc-title { font-size: 13.5px; }
+        .mc-desc { font-size: 12.5px; margin-top: 3px; }
+
+        /* ===== CALENDAR ===== */
+        .cal-badge { font-size: 11.5px; padding: 6px 11px; margin-bottom: 12px; }
+        .cal-header { gap: 8px; margin-bottom: 14px; }
+        .cal-month-title { font-size: 17px; }
+        .cal-nav-btn { width: 36px; height: 36px; font-size: 16px; border-radius: 10px; }
+        .cal-today-btn { font-size: 12px; padding: 8px 12px; border-radius: 9px; }
+        .cal-grid { gap: 4px; }
+        .cal-dow { font-size: 10px; padding: 6px 2px; letter-spacing: .06em; }
+        .cal-day { min-height: 66px; padding: 5px; border-radius: 9px; gap: 2px; }
+        .cal-day-num { font-size: 11.5px; }
+        .cal-event { font-size: 9.5px; padding: 1px 4px 1px 5px; border-left-width: 2px; }
+        .cal-more { font-size: 9px; }
+        .cal-hint { font-size: 12px; padding: 11px 13px; border-radius: 11px; }
+
+        /* ===== LOGIN ===== */
+        .login-box { padding: 26px 20px; border-radius: 20px; }
+        .login-icon { width: 60px; height: 60px; font-size: 30px; margin-bottom: 14px; }
+        .login-box h3 { font-size: 20px; }
+        .login-box > p { font-size: 13.5px; margin-bottom: 18px; }
+
+        /* ===== ADMIN ===== */
+        .admin-hero h2 { font-size: 24px; }
+        .admin-hero p { font-size: 13.5px; }
+        .admin-nav { gap: 5px; padding: 5px; border-radius: 15px; margin-bottom: 16px; }
+        .admin-nav button { font-size: 13px; padding: 9px 14px; border-radius: 11px; }
+
+        .admin-card { padding: 16px; border-radius: 18px; margin-bottom: 12px; }
+        .admin-card-head { gap: 10px; margin-bottom: 12px; padding-bottom: 12px; }
+        .admin-emoji { width: 44px; height: 44px; font-size: 26px; border-radius: 12px; }
+        .admin-name { font-size: 16px; }
+        .icon-btn { width: 34px; height: 34px; font-size: 14px; border-radius: 10px; }
+
+        .admin-fields { grid-template-columns: 1fr; gap: 10px; }
+        .a-field label { font-size: 10px; }
+        .a-field input, .a-field select, .a-field textarea {
+            font-size: 14px; padding: 10px 12px; border-radius: 10px;
+        }
+        .a-field textarea { min-height: 90px; }
+        .a-field textarea.tall { min-height: 140px; }
+
+        .btn { font-size: 13.5px; padding: 11px 18px; border-radius: 12px; }
+        .add-section { padding: 16px; border-radius: 18px; margin-bottom: 18px; }
+        .add-section h3 { font-size: 15px; margin-bottom: 12px; }
+        .admin-section-title { font-size: 15.5px; margin: 20px 0 10px; }
+        .admin-footer-bar { padding: 16px; border-radius: 16px; margin-top: 28px; }
+
+        /* Admin: литература */
+        .lit-week-edit { grid-template-columns: 1fr; padding: 10px; border-radius: 10px; gap: 8px; }
+        .lit-week-edit .drag-handle,
+        .lit-week-edit .lit-week-num,
+        .lit-week-edit .icon-btn { margin-top: 0; }
+        .lit-week-edit .a-field label { font-size: 10px; }
+        .lit-week-edit .a-field input,
+        .lit-week-edit .a-field textarea { font-size: 13px; padding: 8px 10px; }
+        .lit-week-num { width: 28px; height: 28px; font-size: 12px; }
+
+        .age-edit-row { grid-template-columns: 1fr; padding: 10px; }
+
+        /* ===== MODAL / EVENT ===== */
+        .modal-content { padding: 24px 20px; border-radius: 20px; }
+        .modal-content h3 { font-size: 20px; }
+        .modal-content p { font-size: 14px; }
+        .modal-close { padding: 12px 30px; font-size: 14px; }
+
+        .event-box { padding: 20px 18px; border-radius: 18px; }
+        .event-box h3 { font-size: 17px; }
+        .event-box .sub { font-size: 12.5px; margin-bottom: 14px; }
+        .event-box .field input[type="text"],
+        .event-box .field input[type="date"] {
+            font-size: 14px; padding: 10px 12px;
+        }
+        .swatch { width: 30px; height: 30px; border-radius: 8px; }
+        .color-custom-wrap { padding: 3px 8px 3px 3px; font-size: 11px; }
+        .color-custom-wrap input[type="color"] { width: 28px; height: 28px; }
+        .event-box .btn { font-size: 13px; padding: 11px 16px; }
+    }
+
+    /* ===== Совсем маленькие телефоны ===== */
+    @media (max-width: 400px) {
+        .groups-grid { gap: 8px; }
+        .group-card { padding: 12px 8px; }
+        .group-card .emoji { font-size: 30px; }
+        .group-card h3 { font-size: 13.5px; }
+        .group-card .age { font-size: 8.5px; }
+        .card-link { font-size: 9px; padding: 4px 8px; }
+
+        .group-banner { padding: 14px; }
+        .group-banner .banner-emoji { font-size: 30px; }
+        .group-banner h1 { font-size: 16px; }
+        .group-banner p { font-size: 11.5px; }
+
+        .lit-table tr { padding: 12px 12px 10px; margin: 8px 0 0; }
+        .lit-table td.lit-num-cell { top: 8px; right: 8px; width: 24px; height: 24px; font-size: 11px; }
+
+        .cal-day { min-height: 58px; padding: 4px; }
+        .cal-day-num { font-size: 11px; }
+        .cal-event { font-size: 8.5px; }
+
+        .month-chip { font-size: 11.5px; padding: 6px 10px; }
+        .month-chip .mc-text { max-width: 100px; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo-block">
+            <div class="logo-icon" id="logoBtn" title="На главную">🏫</div>
+            <div class="title-block">
+                <h1 id="schoolName">СП ОДО ГБОУ школа 544</h1>
+                <p id="schoolSubtitle">Кабинет старшего воспитателя</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-info" id="userBtn" title="Открыть админ-панель">
+                <div class="user-avatar">👩‍🏫</div>
+                <span>Хибабаева Ф. А.</span>
+                <span class="lock" id="userLock">🔒</span>
+            </div>
+            <button class="logout-header-btn" id="logoutHeaderBtn" title="Выйти из админ-панели">
+                🚪 <span class="text">Выйти</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div id="homeView">
+    <main>
+        <div class="section-title">
+            <h2 id="pageTitle">Группы детского сада</h2>
+            <p id="pageSubtitle">Выберите группу для просмотра информации</p>
+        </div>
+        <div class="groups-grid" id="groupsGrid"></div>
+    </main>
+    <footer>© 2026 СП ОДО ГБОУ школа 544  Управление дошкольного образования</footer>
+</div>
+
+<div id="groupView" style="display:none"></div>
+
+<main id="adminView" class="admin-main" style="display:none"></main>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h3 id="modalTitle">Название группы</h3>
+        <p id="modalText"></p>
+        <button class="modal-close" onclick="closeModal()">Закрыть</button>
+    </div>
+</div>
+
+<div class="event-modal" id="eventModal">
+    <div class="event-box" id="eventBox"></div>
+</div>
+
+<div class="login-overlay" id="loginOverlay">
+    <div class="login-box">
+        <div class="login-icon">🔐</div>
+        <h3>Вход для администрации</h3>
+        <p>Введите пароль старшего воспитателя</p>
+        <form id="loginForm">
+            <input type="password" id="loginPassword" placeholder="Пароль" autocomplete="current-password">
+            <button type="submit" class="btn-primary">Войти</button>
+            <div class="login-error" id="loginError"></div>
+        </form>        
+    </div>
+</div>
+
+<script>
+/* ============================================================
+   КОНСТАНТЫ
+   ============================================================ */
+const STORAGE_KEY = 'vospitatel_state_v11';
+const ADMIN_PASSWORD = '03pa30ra';
+const TOKEN_KEY = 'vospitatel_token';
+
+const COLOR_LIST = [
+    { id: 'c1',  name: 'Розово-оранжевый' },
+    { id: 'c2',  name: 'Голубой' },
+    { id: 'c3',  name: 'Зелёный' },
+    { id: 'c4',  name: 'Розово-жёлтый' },
+    { id: 'c5',  name: 'Сиреневый' },
+    { id: 'c6',  name: 'Малиновый' },
+    { id: 'c7',  name: 'Бирюзово-синий' },
+    { id: 'c8',  name: 'Закатный' },
+    { id: 'c9',  name: 'Морской' },
+    { id: 'c10', name: 'Лавандовый' },
+    { id: 'c11', name: 'Мятный' },
+    { id: 'c12', name: 'Персиковый' },
+    { id: 'c13', name: 'Сапфировый' },
+    { id: 'c14', name: 'Изумрудный' },
+    { id: 'c15', name: 'Фуксия' },
+    { id: 'c16', name: 'Космос' }
+];
+
+const EVENT_PALETTE = [
+    '#4a90e2', '#e74c3c', '#f39c12', '#f1c40f',
+    '#27ae60', '#16a085', '#8e44ad', '#e91e63',
+    '#34495e', '#95a5a6', '#d35400', '#c0392b'
+];
+
+const MONTHS_RU = ['Январь','Февраль','Март','Апрель','Май','Июнь',
+                   'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+const MONTHS_RU_UPPER = MONTHS_RU.map(m => m.toUpperCase());
+const DOW_SHORT = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+const WEEK_DAYS = ['Понедельник','Вторник','Среда','Четверг','Пятница'];
+
+function defaultLessonSchedule() {
+    return WEEK_DAYS.map(day => ({ day, items: [] }));
+}
+
+function defaultDailyRoutine() {
+    return [
+        { time: '07:30–08:20', activity: 'Приём детей, игры, утренняя гимнастика' },
+        { time: '08:20–08:50', activity: 'Завтрак' },
+        { time: '08:50–09:00', activity: 'Подготовка к занятиям' },
+        { time: '09:00–10:00', activity: 'Организованная образовательная деятельность' },
+        { time: '10:00–12:00', activity: 'Прогулка' },
+        { time: '12:00–12:30', activity: 'Обед' },
+        { time: '12:30–15:00', activity: 'Дневной сон' },
+        { time: '15:00–15:30', activity: 'Полдник' },
+        { time: '15:30–17:00', activity: 'Игры, самостоятельная деятельность' },
+        { time: '17:00–19:00', activity: 'Прогулка, уход домой' }
+    ];
+}
+
+function defaultArtLiterature() {
+    return [
+        {
+            id: 'lit_sep',
+            month: 'СЕНТЯБРЬ (4 недели)',
+            weeks: [
+                { id: 'lit_sep_w1', week: '1-я неделя', theme: '«Здравствуй, детский сад!»',
+                  works: 'Русская народная сказка «Кот, Петух и Лиса»; потешки',
+                  tasks: 'Учить слушать сказку, понимать простые сюжеты; развивать внимание' },
+                { id: 'lit_sep_w2', week: '2-я неделя', theme: '«Осень золотая»',
+                  works: 'К. Бальмонт «Осень»; А. Плещеев «Осень наступила»; А. Кольцов «Дуют ветры...»',
+                  tasks: 'Учить видеть красоту осенней природы; развивать речь' },
+                { id: 'lit_sep_w3', week: '3-я неделя', theme: '«Осенние дары»',
+                  works: 'Русская народная сказка «У страха глаза велики»; «Лиса и Заяц»',
+                  tasks: 'Учить понимать юмор; развивать умение пересказывать' },
+                { id: 'lit_sep_w4', week: '4-я неделя', theme: '«Домашние животные»',
+                  works: 'С. Маршак «Зоосад» (отрывки); А. Толстой «Петушки»',
+                  tasks: 'Познакомить с животными; учить звукоподражанию' }
+            ]
+        },
+        {
+            id: 'lit_oct',
+            month: 'ОКТЯБРЬ (4 недели)',
+            weeks: [
+                { id: 'lit_oct_w1', week: '1-я неделя', theme: '«Мои любимые игрушки»',
+                  works: 'А. Барто «Игрушки» (цикл); Н. Забила «Карандаш»',
+                  tasks: 'Учить запоминать короткие стихи; развивать память' },
+                { id: 'lit_oct_w2', week: '2-я неделя', theme: '«Сказки о животных»',
+                  works: 'Русская народная сказка «Бычок — чёрный бочок, белые копытца»; «Волк и козлята»',
+                  tasks: 'Учить понимать поступки героев; воспитывать доброту' },
+                { id: 'lit_oct_w3', week: '3-я неделя', theme: '«В гостях у сказки»',
+                  works: 'Русская народная сказка «Снегурушка и Лиса»; «Лиса и Заяц»',
+                  tasks: 'Учить драматизации; развивать выразительность речи' },
+                { id: 'lit_oct_w4', week: '4-я неделя', theme: '«Осень в лесу»',
+                  works: 'В. Бианки «Купание медвежат»; Ю. Дмитриев «Синий шалашик»',
+                  tasks: 'Воспитывать любовь к природе; учить наблюдать' }
+            ]
+        }
+    ];
+}
+
+function defaultMorningCircle() {
+    return [
+        { id: 'mc_1', title: 'Приветствие', description: 'Хоровод «Доброе утро», эмоциональный настрой на день' },
+        { id: 'mc_2', title: 'Игра', description: 'Коммуникативная игра или пальчиковая гимнастика' },
+        { id: 'mc_3', title: 'Обмен новостями', description: 'Дети делятся новостями, обсуждение' },
+        { id: 'mc_4', title: 'Планирование дня', description: 'Определение планов на день, работа с календарём' },
+        { id: 'mc_5', title: 'Рефлексия', description: 'Подведение итога, прощание' }
+    ];
+}
+
+function exampleWeeklyThemes() {
+    return [{
+        id: 'wk_example',
+        month: 'СЕНТЯБРЬ',
+        weekNumber: '2 НЕДЕЛЯ',
+        dates: '7.09 – 11.09',
+        dooTheme: 'Азбука комплексной безопасности',
+        dooDescription: 'Правила дорожного движения для пешеходов, велосипедистов, самокатов, роликах и так далее. Профессии, связанные с дорогой и правилами дорожного движения. Видах транспорта, особенности правил при движении специального транспорта. Дорога до детского сада, какие правила важно соблюдать. Какие опасности бывают во дворе.',
+        ageSubtopics: [{
+            age: '1 года – 3 лет',
+            subtopic: 'Опасное — безопасное: что нельзя трогать?',
+            description: '«Знакомство с понятиями «можно» и «нельзя» через игру и наблюдение. Что нельзя трогать дома? (розетки, спички, горячие предметы, ножницы, лекарства).'
+        }],
+        holidays: '9 сентября — День плюшевого мишки'
+    }];
+}
+
+const DEFAULT_STATE = {
+    settings: {
+        schoolName: 'СП ОДО ГБОУ школа 544',
+        schoolSubtitle: 'Кабинет старшего воспитателя',
+        pageTitle: 'Группы детского сада',
+        pageSubtitle: 'Выберите группу для просмотра информации'
+    },
+    calendar: [],
+    groups: [
+        { name: "Ясельная",           age: "1,5 – 2 года", emoji: "🍼", color: "c1",
+          lessonSchedule: defaultLessonSchedule(), weeklyThemes: exampleWeeklyThemes(),
+          dailyRoutine: defaultDailyRoutine(), artLiterature: defaultArtLiterature(),
+          morningCircle: defaultMorningCircle() },
+        { name: "Младшая",            age: "2 – 3 года",   emoji: "🧸", color: "c2",
+          lessonSchedule: defaultLessonSchedule(), weeklyThemes: [],
+          dailyRoutine: defaultDailyRoutine(), artLiterature: [],
+          morningCircle: defaultMorningCircle() },
+        { name: "Средняя",            age: "3 – 4 года",   emoji: "🎨", color: "c3",
+          lessonSchedule: defaultLessonSchedule(), weeklyThemes: [],
+          dailyRoutine: defaultDailyRoutine(), artLiterature: [],
+          morningCircle: defaultMorningCircle() },
+        { name: "Старшая",            age: "4 – 5 лет",    emoji: "📚", color: "c4",
+          lessonSchedule: defaultLessonSchedule(), weeklyThemes: [],
+          dailyRoutine: defaultDailyRoutine(), artLiterature: [],
+          morningCircle: defaultMorningCircle() },
+        { name: "Подготовительная А", age: "5 – 6 лет",    emoji: "✏️", color: "c5",
+          lessonSchedule: defaultLessonSchedule(), weeklyThemes: [],
+          dailyRoutine: defaultDailyRoutine(), artLiterature: [],
+          morningCircle: defaultMorningCircle() },
+        { name: "Подготовительная Б", age: "6 – 7 лет",    emoji: "🎓", color: "c6",
+          lessonSchedule: defaultLessonSchedule(), weeklyThemes: [],
+          dailyRoutine: defaultDailyRoutine(), artLiterature: [],
+          morningCircle: defaultMorningCircle() }
+    ]
+};
+
+function loadState() {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return JSON.parse(JSON.stringify(DEFAULT_STATE));
+        const s = JSON.parse(raw);
+        if (!s.settings) s.settings = JSON.parse(JSON.stringify(DEFAULT_STATE.settings));
+        if (!Array.isArray(s.calendar)) s.calendar = [];
+        if (!Array.isArray(s.groups)) s.groups = JSON.parse(JSON.stringify(DEFAULT_STATE.groups));
+        s.groups.forEach(g => {
+            if (!Array.isArray(g.lessonSchedule) || !g.lessonSchedule.length)
+                g.lessonSchedule = defaultLessonSchedule();
+            if (!Array.isArray(g.weeklyThemes)) g.weeklyThemes = [];
+            g.weeklyThemes = g.weeklyThemes.map(t => {
+                if (t.dooTheme !== undefined || t.ageSubtopics !== undefined) {
+                    return {
+                        id: t.id || uid(),
+                        month: t.month || '',
+                        weekNumber: t.weekNumber || '',
+                        dates: t.dates || '',
+                        dooTheme: t.dooTheme || '',
+                        dooDescription: t.dooDescription || '',
+                        ageSubtopics: Array.isArray(t.ageSubtopics) ? t.ageSubtopics : [],
+                        holidays: t.holidays || ''
+                    };
+                }
+                return {
+                    id: t.id || uid(),
+                    month: '',
+                    weekNumber: '',
+                    dates: t.week || '',
+                    dooTheme: t.title || '',
+                    dooDescription: t.desc || '',
+                    ageSubtopics: [],
+                    holidays: ''
+                };
+            });
+            if (!Array.isArray(g.dailyRoutine) || !g.dailyRoutine.length)
+                g.dailyRoutine = defaultDailyRoutine();
+            if (!Array.isArray(g.artLiterature)) g.artLiterature = [];
+            g.artLiterature = g.artLiterature
+                .filter(m => m && Array.isArray(m.weeks))
+                .map(m => ({
+                    id: m.id || uid(),
+                    month: m.month || '',
+                    weeks: m.weeks.map(w => ({
+                        id: w.id || uid(),
+                        week: w.week || '',
+                        theme: w.theme || '',
+                        works: w.works || '',
+                        tasks: w.tasks || ''
+                    }))
+                }));
+            if (!Array.isArray(g.morningCircle)) g.morningCircle = defaultMorningCircle();
+
+            if (Array.isArray(g.events) && g.events.length) {
+                g.events.forEach(ev => {
+                    if (!s.calendar.find(x => x.id === ev.id)) {
+                        s.calendar.push({
+                            id: ev.id || uid(),
+                            date: ev.date,
+                            title: ev.title,
+                            color: ev.color || '#4a90e2'
+                        });
+                    }
+                });
+                g.events = [];
+            }
+        });
+        return s;
+    } catch (e) {
+        return JSON.parse(JSON.stringify(DEFAULT_STATE));
+    }
+}
+function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+let state = loadState();
+let authToken = sessionStorage.getItem(TOKEN_KEY) || null;
+const isAdmin = () => !!authToken;
+
+let adminTab = 'groups';
+let adminGroupId = 0;
+let adminContentTab = 'schedule';
+let currentGroupId = null;
+let currentGroupTab = 'schedule';
+let currentMonthFilter = 'all';   // 'all' | '<название месяца>'
+let calYear, calMonth;
+let editingEvent = null;
+let selectedEventColor = EVENT_PALETTE[0];
+
+const uid = () => 'x' + Math.random().toString(36).slice(2,9);
+
+function escHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, m => ({
+        '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+    }[m]));
+}
+function fmtDate(iso) {
+    if (!iso) return '—';
+    const [y,m,d] = iso.split('-');
+    return `${d}.${m}.${y}`;
+}
+function pad2(n) { return n < 10 ? '0'+n : ''+n; }
+function todayISO() {
+    const t = new Date();
+    return `${t.getFullYear()}-${pad2(t.getMonth()+1)}-${pad2(t.getDate())}`;
+}
+function toISODate(d) {
+    return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+}
+function toast(msg) {
+    let el = document.getElementById('toastMini');
+    if (!el) {
+        el = document.createElement('div');
+        el.id = 'toastMini';
+        el.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);'+
+            'background:#1f2937;color:#fff;padding:14px 24px;border-radius:14px;'+
+            'font-size:14.5px;font-weight:700;box-shadow:0 20px 40px -20px rgba(0,0,0,.5);'+
+            'opacity:0;pointer-events:none;transition:opacity .25s, transform .25s;z-index:1000;';
+        document.body.appendChild(el);
+    }
+    el.textContent = msg;
+    el.style.opacity = '1';
+    el.style.transform = 'translateX(-50%) translateY(0)';
+    clearTimeout(el._t);
+    el._t = setTimeout(() => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateX(-50%) translateY(20px)';
+    }, 2200);
+}
+
+/* ============================================================
+   ПЕРЕТАСКИВАНИЕ ПОЛОСЫ
+   ============================================================ */
+function makeDraggableScroller(el) {
+    if (!el || el._dragInit) return;
+    el._dragInit = true;
+
+    let isDown = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+    let moved = false;
+    let lastX = 0, lastTime = 0, velocity = 0;
+
+    const onDown = (e) => {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        isDown = true;
+        moved = false;
+        startX = e.clientX;
+        startScrollLeft = el.scrollLeft;
+        lastX = e.clientX;
+        lastTime = performance.now();
+        velocity = 0;
+        el.classList.add('dragging');
+    };
+    const onMove = (e) => {
+        if (!isDown) return;
+        const dx = e.clientX - startX;
+        if (!moved && Math.abs(dx) > 6) moved = true;
+        if (moved) {
+            el.scrollLeft = startScrollLeft - dx;
+            if (e.cancelable) e.preventDefault();
+        }
+        const now = performance.now();
+        const dt = now - lastTime;
+        if (dt > 0) velocity = (e.clientX - lastX) / dt;
+        lastX = e.clientX;
+        lastTime = now;
+    };
+    const onUp = () => {
+        if (!isDown) return;
+        isDown = false;
+        el.classList.remove('dragging');
+        if (moved && Math.abs(velocity) > 0.2) {
+            let v = velocity * 12;
+            const step = () => {
+                el.scrollLeft -= v;
+                v *= 0.94;
+                if (Math.abs(v) > 0.4) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        }
+        velocity = 0;
+    };
+
+    el.addEventListener('click', (e) => {
+        if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; }
+    }, true);
+    el.addEventListener('pointerdown', onDown);
+    el.addEventListener('pointermove', onMove);
+    el.addEventListener('pointerup', onUp);
+    el.addEventListener('pointercancel', onUp);
+    el.addEventListener('pointerleave', () => { if (isDown) onUp(); });
+    el.addEventListener('dragstart', e => e.preventDefault());
+}
+
+/* ============================================================
+   УНИВЕРСАЛЬНАЯ СОРТИРОВКА ПЕРЕТАСКИВАНИЕМ
+   ============================================================ */
+function makeSortable(container, opts = {}) {
+    if (!container) return;
+    if (container._sortableCleanup) container._sortableCleanup();
+
+    const itemSel   = opts.itemSelector  || '[data-sortable-item]';
+    const handleSel = opts.handleSelector || null;
+    const onReorder = typeof opts.onReorder === 'function' ? opts.onReorder : () => {};
+
+    let dragEl = null, placeholder = null, ghost = null;
+    let startX = 0, startY = 0, pointerId = null;
+    let dragging = false, items = [], offsetY = 0;
+
+    const getItems = () =>
+        Array.from(container.children).filter(el => el.matches && el.matches(itemSel));
+
+    const getAfterEl = (y) => {
+        const els = getItems().filter(el => el !== dragEl && el !== placeholder);
+        let closest = null, closestOffset = -Infinity;
+        els.forEach(el => {
+            const r = el.getBoundingClientRect();
+            const off = y - r.top - r.height / 2;
+            if (off < 0 && off > closestOffset) { closestOffset = off; closest = el; }
+        });
+        return closest;
+    };
+
+    const onMove = (ev) => {
+        if (ev.pointerId !== pointerId) return;
+        const dx = ev.clientX - startX;
+        const dy = ev.clientY - startY;
+        if (!dragging) {
+            if (Math.hypot(dx, dy) < 7) return;
+            if (!handleSel && Math.abs(dy) <= Math.abs(dx)) { finish(); return; }
+            beginDrag(ev);
+        }
+        if (dragging) {
+            if (ev.cancelable) ev.preventDefault();
+            ghost.style.top = (ev.clientY - offsetY) + 'px';
+            const after = getAfterEl(ev.clientY);
+            if (after) container.insertBefore(placeholder, after);
+            else       container.appendChild(placeholder);
+        }
+    };
+
+    const onUp = (ev) => {
+        if (ev.pointerId !== pointerId) return;
+        if (dragging) endDrag();
+        finish();
+    };
+
+    const beginDrag = (ev) => {
+        dragging = true;
+        items = getItems();
+        const rect = dragEl.getBoundingClientRect();
+        offsetY = ev.clientY - rect.top;
+
+        placeholder = document.createElement('div');
+        placeholder.className = 'sortable-placeholder';
+        placeholder.style.height = rect.height + 'px';
+        container.insertBefore(placeholder, dragEl);
+
+        ghost = dragEl.cloneNode(true);
+        ghost.classList.add('sortable-ghost');
+        ghost.style.cssText +=
+            `position:fixed;left:${rect.left}px;top:${rect.top}px;` +
+            `width:${rect.width}px;height:${rect.height}px;` +
+            `margin:0;z-index:9999;opacity:.92;transform:scale(1.02);`;
+        document.body.appendChild(ghost);
+
+        dragEl.classList.add('sortable-dragging');
+        dragEl.style.display = 'none';
+        document.body.style.userSelect = 'none';
+        document.body.style.cursor = 'grabbing';
+    };
+
+    const endDrag = () => {
+        if (ghost) ghost.remove();
+        dragEl.classList.remove('sortable-dragging');
+        dragEl.style.display = '';
+        container.insertBefore(dragEl, placeholder);
+        placeholder.remove();
+        document.body.style.userSelect = '';
+        document.body.style.cursor = '';
+
+        const from = items.indexOf(dragEl);
+        const to   = getItems().indexOf(dragEl);
+        dragging = false; dragEl = null; ghost = null; placeholder = null; items = [];
+
+        if (from !== to && from >= 0 && to >= 0) {
+            container._suppressClick = true;
+            setTimeout(() => { container._suppressClick = false; }, 80);
+            onReorder(from, to);
+        }
+    };
+
+    const finish = () => {
+        window.removeEventListener('pointermove', onMove);
+        window.removeEventListener('pointerup', onUp);
+        window.removeEventListener('pointercancel', onUp);
+        pointerId = null;
+    };
+
+    const onDown = (e) => {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        if (handleSel && !e.target.closest(handleSel)) return;
+        const item = e.target.closest(itemSel);
+        if (!item || item.parentElement !== container) return;
+
+        dragEl = item;
+        startX = e.clientX;
+        startY = e.clientY;
+        pointerId = e.pointerId;
+
+        window.addEventListener('pointermove', onMove, { passive: false });
+        window.addEventListener('pointerup', onUp);
+        window.addEventListener('pointercancel', onUp);
+    };
+
+    const onClickCapture = (ev) => {
+        if (container._suppressClick) {
+            ev.stopPropagation();
+            ev.preventDefault();
+            container._suppressClick = false;
+        }
+    };
+
+    container.addEventListener('pointerdown', onDown);
+    container.addEventListener('click', onClickCapture, true);
+    container._sortableCleanup = () => {
+        container.removeEventListener('pointerdown', onDown);
+        container.removeEventListener('click', onClickCapture, true);
+    };
+}
+
+/* ============================================================
+   ШАПКА
+   ============================================================ */
+function updateHeaderAuth() {
+    const lock = document.getElementById('userLock');
+    const userBtn = document.getElementById('userBtn');
+    const logoutBtn = document.getElementById('logoutHeaderBtn');
+    if (isAdmin()) {
+        lock.textContent = '⚙️';
+        userBtn.title = 'Открыть админ-панель';
+        logoutBtn.classList.add('visible');
+    } else {
+        lock.textContent = '🔒';
+        userBtn.title = 'Войти в админ-панель';
+        logoutBtn.classList.remove('visible');
+    }
+}
+function applySettingsToHeader() {
+    document.getElementById('schoolName').textContent = state.settings.schoolName;
+    document.getElementById('schoolSubtitle').textContent = state.settings.schoolSubtitle;
+}
+
+/* ============================================================
+   ГЛАВНАЯ
+   ============================================================ */
+function renderHome() {
+    applySettingsToHeader();
+    document.getElementById('pageTitle').textContent = state.settings.pageTitle;
+    document.getElementById('pageSubtitle').textContent = state.settings.pageSubtitle;
+
+    const grid = document.getElementById('groupsGrid');
+    grid.innerHTML = '';
+
+    const adm = isAdmin();
+
+    state.groups.forEach((g, i) => {
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = `group-card ${g.color}`;
+        card.dataset.sortableItem = '';
+        card.style.opacity = '0';
+        card.style.animation = `slideUp 0.6s ease ${i * 0.08}s forwards`;
+        card.innerHTML = `
+            ${adm ? `<span class="drag-handle card-drag-handle" data-drag-handle title="Перетащите, чтобы изменить порядок">⋮⋮</span>` : ''}
+            <div class="card-top"><span class="emoji">${escHtml(g.emoji)}</span></div>
+            <div class="card-bottom">
+                <h3>${escHtml(g.name)} группа</h3>
+                <div class="age">Возраст: ${escHtml(g.age)}</div>
+                <div class="card-link">Открыть →</div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+
+    grid.onclick = (e) => {
+        const card = e.target.closest('.group-card');
+        if (!card || card.parentElement !== grid) return;
+        const idx = Array.from(grid.children).indexOf(card);
+        location.hash = '#/group/' + idx + '/schedule';
+    };
+
+    if (adm) {
+        makeSortable(grid, {
+            handleSelector: '[data-drag-handle]',
+            onReorder: (from, to) => {
+                state.groups.splice(to, 0, state.groups.splice(from, 1)[0]);
+                saveState();
+                toast('Порядок групп сохранён');
+            }
+        });
+    }
+
+    updateHeaderAuth();
+}
+
+/* ============================================================
+   СТРАНИЦА ГРУППЫ
+   ============================================================ */
+const GROUP_TABS = [
+    ['schedule',      '📅 Расписания занятий'],
+    ['weeklyThemes',  '📖 Темы недели'],
+    ['dailyRoutine',  '🕐 Режим дня'],
+    ['artLiterature', '📚 Худож. литература'],
+    ['morningCircle', '🌅 Утренний круг'],
+    ['calendar',      '🗓 Календарь']
+];
+
+/* ---------- ФИЛЬТР ПО МЕСЯЦАМ ---------- */
+function monthsSupportFilter(tab) {
+    return tab === 'weeklyThemes' || tab === 'artLiterature';
+}
+
+/**
+ * Возвращает массив { key, label, count } уникальных месяцев
+ * для текущей вкладки и группы.
+ */
+function collectMonths(g, tab) {
+    const map = new Map();
+    if (tab === 'weeklyThemes') {
+        (g.weeklyThemes || []).forEach(t => {
+            const key = (t.month || '').trim();
+            if (!key) return;
+            if (!map.has(key)) map.set(key, { key, label: key, count: 0 });
+            map.get(key).count++;
+        });
+    } else if (tab === 'artLiterature') {
+        (g.artLiterature || []).forEach(m => {
+            const key = (m.month || '').trim();
+            if (!key) return;
+            if (!map.has(key)) map.set(key, { key, label: key, count: 0 });
+            map.get(key).count += (m.weeks || []).length || 1;
+        });
+    }
+    return Array.from(map.values());
+}
+
+function renderMonthFilterHTML(g) {
+    if (!monthsSupportFilter(currentGroupTab)) return '';
+    const months = collectMonths(g, currentGroupTab);
+    if (!months.length) return '';
+
+    // если выбранный ранее месяц исчез — сбрасываем фильтр
+    if (currentMonthFilter !== 'all' && !months.some(m => m.key === currentMonthFilter)) {
+        currentMonthFilter = 'all';
+    }
+
+    const total = months.reduce((s, m) => s + m.count, 0);
+    const chips = [
+        { key: 'all', label: 'Все месяцы', count: total },
+        ...months
+    ];
+
+    return `
+        <div class="month-filter-wrap">
+            <span class="mf-label">🗓 Месяц:</span>
+            <div class="month-filter" id="monthFilter">
+                ${chips.map(c => `
+                    <button class="month-chip ${currentMonthFilter === c.key ? 'active' : ''}"
+                            data-month="${escHtml(c.key)}"
+                            title="${escHtml(c.label)}">
+                        <span class="mc-text">${escHtml(c.label)}</span>
+                        <span class="mc-cnt">${c.count}</span>
+                    </button>
+                `).join('')}
+            </div>
+        </div>
+    `;
+}
+
+function bindMonthFilter(g) {
+    const mf = document.getElementById('monthFilter');
+    if (!mf) return;
+    makeDraggableScroller(mf);
+
+    // Центрируем активный чип
+    const active = mf.querySelector('.month-chip.active');
+    if (active) {
+        requestAnimationFrame(() => {
+            const target = active.offsetLeft - (mf.clientWidth - active.clientWidth) / 2;
+            mf.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+        });
+    }
+
+    mf.addEventListener('click', (e) => {
+        const chip = e.target.closest('.month-chip');
+        if (!chip) return;
+        if (chip.dataset.month === currentMonthFilter) return;
+        currentMonthFilter = chip.dataset.month;
+        mf.querySelectorAll('.month-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        // Перерисовываем только панель контента
+        if (currentGroupTab === 'weeklyThemes')      renderGroupWeeklyThemes(g);
+        else if (currentGroupTab === 'artLiterature') renderGroupArtLiterature(g);
+    });
+}
+
+function renderGroupPage() {
+    const view = document.getElementById('groupView');
+    const g = state.groups[currentGroupId];
+    if (!g) { location.hash = '#/'; return; }
+
+    if (!calYear) {
+        const t = new Date();
+        calYear = t.getFullYear();
+        calMonth = t.getMonth();
+    }
+
+    view.innerHTML = `
+        <div class="group-page">
+            <button class="back-btn" id="backBtn">← Все группы</button>
+
+            <div class="group-banner">
+                <div class="banner-emoji">${escHtml(g.emoji)}</div>
+                <div class="banner-text">
+                    <h1>${escHtml(g.name)} группа</h1>
+                    <p>Возраст: ${escHtml(g.age)}</p>
+                </div>
+            </div>
+
+            <div class="tabs" id="groupTabs">
+                ${GROUP_TABS.map(([k, lbl]) => `
+                    <button class="tab ${k === currentGroupTab ? 'active' : ''}" data-tab="${k}">${lbl}</button>
+                `).join('')}
+            </div>
+
+            <div id="monthFilterHost">${renderMonthFilterHTML(g)}</div>
+
+            <div class="panel" id="groupPanel"></div>
+        </div>
+    `;
+
+    const wrap = view.querySelector('.group-page');
+    applyColorVars(wrap, g.color);
+
+    const tabsEl = document.getElementById('groupTabs');
+    makeDraggableScroller(tabsEl);
+
+    document.getElementById('backBtn').onclick = () => { location.hash = '#/'; };
+
+    tabsEl.addEventListener('click', (e) => {
+        const btn = e.target.closest('.tab');
+        if (!btn) return;
+        if (btn.dataset.tab === currentGroupTab) return;
+        currentGroupTab = btn.dataset.tab;
+        currentMonthFilter = 'all';   // при смене вкладки — сбрасываем фильтр
+        location.hash = `#/group/${currentGroupId}/${currentGroupTab}`;
+    });
+
+    const activeTab = view.querySelector('.tab.active');
+    if (activeTab && tabsEl) {
+        const target = activeTab.offsetLeft - (tabsEl.clientWidth - activeTab.clientWidth) / 2;
+        tabsEl.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+    }
+
+    // Привязка фильтра по месяцам
+    bindMonthFilter(g);
+
+    if (currentGroupTab === 'schedule')           renderGroupSchedule(g);
+    else if (currentGroupTab === 'weeklyThemes')  renderGroupWeeklyThemes(g);
+    else if (currentGroupTab === 'dailyRoutine')  renderGroupDailyRoutine(g);
+    else if (currentGroupTab === 'artLiterature') renderGroupArtLiterature(g);
+    else if (currentGroupTab === 'morningCircle') renderGroupMorningCircle(g);
+    else                                           renderGroupCalendar(g);
+}
+
+function applyColorVars(el, colorId) {
+    const test = document.createElement('div');
+    test.className = colorId;
+    test.style.position = 'absolute';
+    test.style.visibility = 'hidden';
+    document.body.appendChild(test);
+    const cs = getComputedStyle(test);
+    el.style.setProperty('--c1', cs.getPropertyValue('--c1').trim());
+    el.style.setProperty('--c2', cs.getPropertyValue('--c2').trim());
+    document.body.removeChild(test);
+}
+
+function renderGroupSchedule(g) {
+    const panel = document.getElementById('groupPanel');
+    const data = g.lessonSchedule || [];
+
+    panel.innerHTML = `
+        <div class="sched">
+            ${data.map(d => `
+                <div class="sched-day">
+                    <h4>${escHtml(d.day)}</h4>
+                    ${d.items && d.items.length
+                        ? `<ul>${d.items.map(it => `<li>${escHtml(it)}</li>`).join('')}</ul>`
+                        : `<div class="empty-inline">Занятий нет</div>`}
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+function renderGroupWeeklyThemes(g) {
+    const panel = document.getElementById('groupPanel');
+    let list = g.weeklyThemes || [];
+
+    // --- применяем фильтр по месяцу ---
+    if (currentMonthFilter !== 'all') {
+        list = list.filter(t => (t.month || '').trim() === currentMonthFilter);
+    }
+
+    if (!list.length) {
+        panel.innerHTML = currentMonthFilter !== 'all'
+            ? `<div class="empty-msg">
+                   <span class="em-emoji">🔍</span>
+                   В месяце «${escHtml(currentMonthFilter)}» тем недели пока нет.
+                   <br>
+                   <button class="em-reset" onclick="resetMonthFilter()">Показать все месяцы</button>
+               </div>`
+            : `<div class="empty-msg">📖 Тем недели пока нет.</div>`;
+        return;
+    }
+
+    panel.innerHTML = `
+        <div class="week-list">
+            ${list.map(t => `
+                <div class="week-card">
+                    <div class="week-header">
+                        ${t.month ? `<div class="month">${escHtml(t.month)}</div>` : ''}
+                        <div class="week-row">
+                            <div class="week-num">${escHtml(t.weekNumber || '')}</div>
+                            <div class="week-dates">${escHtml(t.dates || '')}</div>
+                        </div>
+                    </div>
+
+                    <div class="week-section">
+                        <div class="week-label">Тема ДОО</div>
+                        <div class="week-content">${escHtml(t.dooTheme || '')}</div>
+                    </div>
+
+                    <div class="week-section">
+                        <div class="week-label">Описание</div>
+                        <div class="week-content">${escHtml(t.dooDescription || '')}</div>
+                    </div>
+
+                    <div class="week-section">
+                        <div class="week-label">Подтема на возраст</div>
+                        <div class="week-content">
+                            ${(t.ageSubtopics && t.ageSubtopics.length)
+                                ? t.ageSubtopics.map(a => `
+                                    <div class="age-block">
+                                        <div class="age-name">${escHtml(a.age || '')}</div>
+                                        <div class="age-body">
+                                            ${a.subtopic ? `<div class="age-sub">${escHtml(a.subtopic)}</div>` : ''}
+                                            ${a.description ? `<div class="age-desc">${escHtml(a.description)}</div>` : ''}
+                                        </div>
+                                    </div>
+                                `).join('')
+                                : `<div class="empty-inline">Подтемы не заданы</div>`}
+                        </div>
+                    </div>
+
+                    <div class="week-section">
+                        <div class="week-label">Дополнительные / региональные праздники</div>
+                        <div class="week-content">
+                            ${t.holidays ? escHtml(t.holidays) : '<span class="empty-inline">Нет</span>'}
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+function renderGroupDailyRoutine(g) {
+    const panel = document.getElementById('groupPanel');
+    const list = g.dailyRoutine || [];
+
+    if (!list.length) {
+        panel.innerHTML = `<div class="empty-msg">🕐 Режим дня не заполнен.</div>`;
+        return;
+    }
+
+    panel.innerHTML = `
+        <div class="routine-list">
+            ${list.map(r => `
+                <div class="routine-item">
+                    <div class="routine-time">${escHtml(r.time || '')}</div>
+                    <div class="routine-activity">${escHtml(r.activity || '')}</div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+function renderGroupArtLiterature(g) {
+    const panel = document.getElementById('groupPanel');
+    let list = Array.isArray(g.artLiterature) ? g.artLiterature : [];
+
+    // --- применяем фильтр по месяцу ---
+    if (currentMonthFilter !== 'all') {
+        list = list.filter(m => (m.month || '').trim() === currentMonthFilter);
+    }
+
+    if (!list.length) {
+        panel.innerHTML = currentMonthFilter !== 'all'
+            ? `<div class="empty-msg">
+                   <span class="em-emoji">🔍</span>
+                   В месяце «${escHtml(currentMonthFilter)}» разделов пока нет.
+                   <br>
+                   <button class="em-reset" onclick="resetMonthFilter()">Показать все месяцы</button>
+               </div>`
+            : `<div class="empty-msg">📚 Разделы художественной литературы пока не заполнены.</div>`;
+        return;
+    }
+
+    let counter = 0;
+    panel.innerHTML = `
+        <div class="lit-months">
+            ${list.map(month => {
+                const weeks = month.weeks || [];
+                const rows = weeks.length
+                    ? weeks.map(w => {
+                        counter++;
+                        return `
+                            <tr>
+                                <td class="lit-num-cell">${counter}</td>
+                                <td data-label="Неделя">${escHtml(w.week || '')}</td>
+                                <td data-label="Тема занятия">${escHtml(w.theme || '')}</td>
+                                <td data-label="Произведения">${escHtml(w.works || '')}</td>
+                                <td data-label="Задачи">${escHtml(w.tasks || '')}</td>
+                            </tr>
+                        `;
+                    }).join('')
+                    : `<tr class="lit-empty-row"><td colspan="5" style="text-align:center;color:#b0b8c4;font-style:italic;padding:18px;">Пока нет недель</td></tr>`;
+                return `
+                    <div class="lit-month">
+                        <div class="lit-month-title">${escHtml(month.month || '')}</div>
+                        <div class="lit-table-wrap">
+                            <table class="lit-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width:44px;">№</th>
+                                        <th style="width:110px;">Неделя</th>
+                                        <th style="width:180px;">Тема занятия</th>
+                                        <th>Произведения</th>
+                                        <th style="width:24%;">Задачи</th>
+                                    </tr>
+                                </thead>
+                                <tbody>${rows}</tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }).join('')}
+        </div>
+    `;
+}
+
+function renderGroupMorningCircle(g) {
+    const panel = document.getElementById('groupPanel');
+    const list = Array.isArray(g.morningCircle) ? g.morningCircle : [];
+
+    if (!list.length) {
+        panel.innerHTML = `<div class="empty-msg">🌅 Утренний круг пока не заполнен.</div>`;
+        return;
+    }
+
+    panel.innerHTML = `
+        <div class="mc-list">
+            ${list.map((it, i) => `
+                <div class="mc-item">
+                    <div class="mc-step">${i + 1}</div>
+                    <div class="mc-body">
+                        ${it.title ? `<div class="mc-title">${escHtml(it.title)}</div>` : ''}
+                        ${it.description ? `<div class="mc-desc">${escHtml(it.description)}</div>` : ''}
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+function renderGroupCalendar() {
+    const panel = document.getElementById('groupPanel');
+
+    const firstDay = new Date(calYear, calMonth, 1);
+    const startDow = (firstDay.getDay() + 6) % 7;
+    const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+    const prevMonthDays = new Date(calYear, calMonth, 0).getDate();
+
+    const eventsByDate = {};
+    (state.calendar || []).forEach(ev => {
+        if (!ev.date) return;
+        if (!eventsByDate[ev.date]) eventsByDate[ev.date] = [];
+        eventsByDate[ev.date].push(ev);
+    });
+
+    const t = new Date();
+    const todayStr = `${t.getFullYear()}-${pad2(t.getMonth()+1)}-${pad2(t.getDate())}`;
+
+    const cells = [];
+    for (let i = startDow - 1; i >= 0; i--) {
+        const day = prevMonthDays - i;
+        cells.push({ day, other: true, date: toISODate(new Date(calYear, calMonth - 1, day)) });
+    }
+    for (let d = 1; d <= daysInMonth; d++) {
+        cells.push({ day: d, other: false, date: toISODate(new Date(calYear, calMonth, d)) });
+    }
+    while (cells.length % 7 !== 0) {
+        const nextDay = cells.length - (startDow + daysInMonth) + 1;
+        cells.push({ day: nextDay, other: true, date: toISODate(new Date(calYear, calMonth + 1, nextDay)) });
+    }
+
+    const isAdm = isAdmin();
+
+    panel.innerHTML = `
+        <div class="cal-badge">🌍 Общий календарь — отображается одинаково во всех группах</div>
+
+        <div class="cal-header">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="cal-nav-btn" id="calPrev" title="Предыдущий месяц">‹</button>
+                <div class="cal-month-title">${MONTHS_RU[calMonth]} ${calYear}</div>
+                <button class="cal-nav-btn" id="calNext" title="Следующий месяц">›</button>
+            </div>
+            <button class="cal-today-btn" id="calToday">Сегодня</button>
+        </div>
+
+        <div class="cal-grid">
+            ${DOW_SHORT.map(d => `<div class="cal-dow">${d}</div>`).join('')}
+            ${cells.map(c => {
+                const evs = eventsByDate[c.date] || [];
+                const isToday = c.date === todayStr;
+                const hasEv = evs.length > 0;
+                return `
+                    <div class="cal-day ${c.other ? 'other-month' : ''} ${isToday ? 'today' : ''} ${hasEv ? 'has-event' : ''}"
+                         data-date="${c.date}"
+                         title="${hasEv ? evs.map(e => e.title).join('\n') : 'Нажмите, чтобы добавить событие'}">
+                        <div class="cal-day-num">${c.day}</div>
+                        ${evs.slice(0, 3).map(ev => `
+                            <div class="cal-event" style="color:${ev.color};"
+                                 title="${escHtml(ev.title)}">${escHtml(ev.title)}</div>
+                        `).join('')}
+                        ${evs.length > 3 ? `<div class="cal-more">+${evs.length - 3}</div>` : ''}
+                    </div>
+                `;
+            }).join('')}
+        </div>
+
+        ${isAdm
+            ? `<div class="cal-hint">💡 Нажмите на любую ячейку, чтобы открыть её события или добавить новое. Цвет — это цвет текста названия. Заполняется для всех групп одинаково.</div>`
+            : `<div class="cal-hint" style="background:#f1f5f9;color:#7f8c8d;">👁 Режим просмотра. Нажмите на ячейку, чтобы увидеть события дня.</div>`
+        }
+    `;
+
+    document.getElementById('calPrev').onclick = () => {
+        calMonth--;
+        if (calMonth < 0) { calMonth = 11; calYear--; }
+        renderGroupCalendar();
+    };
+    document.getElementById('calNext').onclick = () => {
+        calMonth++;
+        if (calMonth > 11) { calMonth = 0; calYear++; }
+        renderGroupCalendar();
+    };
+    document.getElementById('calToday').onclick = () => {
+        const n = new Date();
+        calYear = n.getFullYear();
+        calMonth = n.getMonth();
+        renderGroupCalendar();
+    };
+
+    panel.querySelectorAll('.cal-day').forEach(cell => {
+        cell.onclick = () => { openEventModal(cell.dataset.date, null); };
+    });
+}
+
+/* Глобальный сброс фильтра (для кнопки в пустом состоянии) */
+window.resetMonthFilter = function() {
+    currentMonthFilter = 'all';
+    const g = state.groups[currentGroupId];
+    if (!g) return;
+    const host = document.getElementById('monthFilterHost');
+    if (host) host.innerHTML = renderMonthFilterHTML(g);
+    bindMonthFilter(g);
+    if (currentGroupTab === 'weeklyThemes')      renderGroupWeeklyThemes(g);
+    else if (currentGroupTab === 'artLiterature') renderGroupArtLiterature(g);
+};
+
+/* ============================================================
+   МОДАЛКА СОБЫТИЯ
+   ============================================================ */
+function openEventModal(dateISO, eventId) {
+    const adm = isAdmin();
+    if (!Array.isArray(state.calendar)) state.calendar = [];
+
+    editingEvent = eventId ? state.calendar.find(e => e.id === eventId) : null;
+    if (adm) {
+        selectedEventColor = editingEvent ? editingEvent.color : EVENT_PALETTE[0];
+    }
+
+    const box = document.getElementById('eventBox');
+    const dayEvents = state.calendar.filter(e => e.date === dateISO);
+
+    box.innerHTML = `
+        <h3>🗓 ${fmtDate(dateISO)}</h3>
+        <p class="sub">Общий календарь · событий: ${dayEvents.length}</p>
+
+        ${dayEvents.length ? `
+            <div class="event-list">
+                ${dayEvents.map(e => `
+                    <div class="row">
+                        <span class="txt" style="color:${e.color};">${escHtml(e.title)}</span>
+                        ${adm ? `
+                            <button class="mini-btn edit" data-edit="${e.id}" title="Редактировать">✏️</button>
+                            <button class="mini-btn del"  data-del="${e.id}"  title="Удалить">✕</button>
+                        ` : ''}
+                    </div>
+                `).join('')}
+            </div>
+        ` : `<div class="empty-msg" style="padding:20px 10px;">На этот день событий пока нет.</div>`}
+
+        ${adm ? `
+            <div class="field" style="margin-top:16px;">
+                <label>${editingEvent ? 'Изменить название' : 'Новое событие'}</label>
+                <input type="text" id="evTitle" maxlength="60"
+                       placeholder="Например: Осенний утренник"
+                       value="${editingEvent ? escHtml(editingEvent.title) : ''}">
+            </div>
+            <div class="field">
+                <label>Дата</label>
+                <input type="date" id="evDate" value="${editingEvent ? editingEvent.date : dateISO}">
+            </div>
+            <div class="field">
+                <label>Цвет текста события</label>
+                <div class="palette" id="evPalette">
+                    ${EVENT_PALETTE.map(col => `
+                        <div class="swatch ${col === selectedEventColor ? 'selected' : ''}"
+                             data-color="${col}"
+                             style="background:${col}"
+                             title="${col}"></div>
+                    `).join('')}
+                    <label class="color-custom-wrap" title="Выбрать свой цвет">
+                        <input type="color" id="evCustomColor" value="${selectedEventColor}">
+                        <span>Свой</span>
+                    </label>
+                </div>
+                <div class="color-preview-line">
+                    <span class="lbl-mini">Как будет в календаре:</span>
+                    <span class="dot" id="pvDot" style="background:${selectedEventColor};"></span>
+                    <span id="pvText" style="color:${selectedEventColor};">Осенний утренник</span>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn primary" id="evSave">${editingEvent ? 'Сохранить' : 'Добавить'}</button>
+                ${editingEvent ? `<button class="btn ghost" id="evNew">Отменить редактирование</button>` : ''}
+                <button class="btn ghost"   id="evCancel">Закрыть</button>
+            </div>
+        ` : `
+            <div class="actions">
+                <button class="btn ghost" id="evCancel">Закрыть</button>
+            </div>
+        `}
+    `;
+
+    if (adm) {
+        const pvDot  = document.getElementById('pvDot');
+        const pvText = document.getElementById('pvText');
+
+        box.querySelectorAll('#evPalette .swatch').forEach(sw => {
+            sw.onclick = () => {
+                selectedEventColor = sw.dataset.color;
+                box.querySelectorAll('#evPalette .swatch').forEach(s => s.classList.remove('selected'));
+                sw.classList.add('selected');
+                document.getElementById('evCustomColor').value = selectedEventColor;
+                pvDot.style.background = selectedEventColor;
+                pvText.style.color = selectedEventColor;
+            };
+        });
+        document.getElementById('evCustomColor').oninput = (e) => {
+            selectedEventColor = e.target.value;
+            box.querySelectorAll('#evPalette .swatch').forEach(s => s.classList.remove('selected'));
+            pvDot.style.background = selectedEventColor;
+            pvText.style.color = selectedEventColor;
+        };
+
+        box.querySelectorAll('[data-edit]').forEach(b => {
+            b.onclick = () => {
+                const ev = state.calendar.find(x => x.id === b.dataset.edit);
+                openEventModal(ev.date, ev.id);
+            };
+        });
+        box.querySelectorAll('[data-del]').forEach(b => {
+            b.onclick = () => {
+                const idx = state.calendar.findIndex(x => x.id === b.dataset.del);
+                if (idx >= 0) {
+                    state.calendar.splice(idx, 1);
+                    saveState();
+                    renderGroupCalendar();
+                    openEventModal(dateISO, null);
+                    toast('Событие удалено');
+                }
+            };
+        });
+
+        document.getElementById('evSave').onclick = () => {
+            const title = document.getElementById('evTitle').value.trim();
+            const date  = document.getElementById('evDate').value;
+            if (!title) { alert('Введите название события'); return; }
+            if (!date)  { alert('Выберите дату'); return; }
+
+            if (editingEvent) {
+                editingEvent.title = title;
+                editingEvent.date  = date;
+                editingEvent.color = selectedEventColor;
+            } else {
+                state.calendar.push({
+                    id: uid(),
+                    title, date,
+                    color: selectedEventColor
+                });
+            }
+            saveState();
+            renderGroupCalendar();
+            closeEventModal();
+            toast('Сохранено для всех групп');
+        };
+
+        const evNew = document.getElementById('evNew');
+        if (evNew) {
+            evNew.onclick = () => {
+                editingEvent = null;
+                selectedEventColor = EVENT_PALETTE[0];
+                openEventModal(dateISO, null);
+            };
+        }
+    }
+
+    document.getElementById('evCancel').onclick = closeEventModal;
+
+    document.getElementById('eventModal').classList.add('active');
+    if (adm) setTimeout(() => {
+        const inp = document.getElementById('evTitle');
+        if (inp) inp.focus();
+    }, 100);
+}
+function closeEventModal() {
+    document.getElementById('eventModal').classList.remove('active');
+    editingEvent = null;
+}
+document.getElementById('eventModal').addEventListener('click', e => {
+    if (e.target.id === 'eventModal') closeEventModal();
+});
+
+/* ============================================================
+   АДМИН-ПАНЕЛЬ
+   ============================================================ */
+function renderAdmin() {
+    const view = document.getElementById('adminView');
+    view.innerHTML = `
+        <button class="admin-back" id="backBtn">← На главную</button>
+        <div class="admin-hero">
+            <h2>Админ-панель</h2>
+            <p>Управление группами и их содержимым</p>
+        </div>
+        <div class="admin-nav" id="adminTabs">
+            <button data-tab="groups"  class="${adminTab === 'groups' ? 'active' : ''}">👥 Группы</button>
+            <button data-tab="home"    class="${adminTab === 'home'   ? 'active' : ''}">🏠 Главная</button>
+            <button data-tab="content" class="${adminTab === 'content' ? 'active' : ''}">📚 Содержимое групп</button>
+            <button data-tab="calendar" class="${adminTab === 'calendar' ? 'active' : ''}">🗓 Общий календарь</button>
+        </div>
+        <div id="adminBody"></div>
+        <div class="admin-footer-bar">
+            <p>🚪 Завершить редактирование и вернуться на главную страницу</p>
+            <button class="btn danger" id="logoutBtn">Выйти из админ-панели</button>
+        </div>
+    `;
+
+    const adminTabsEl = document.getElementById('adminTabs');
+    makeDraggableScroller(adminTabsEl);
+
+    document.getElementById('backBtn').onclick = () => { location.hash = '#/'; };
+    document.getElementById('logoutBtn').onclick = logoutAndReturnHome;
+
+    adminTabsEl.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-tab]');
+        if (!btn) return;
+        if (btn.dataset.tab === adminTab) return;
+        adminTab = btn.dataset.tab;
+        renderAdmin();
+    });
+
+    const activeAdminTab = adminTabsEl.querySelector('.active');
+    if (activeAdminTab) {
+        const target = activeAdminTab.offsetLeft - (adminTabsEl.clientWidth - activeAdminTab.clientWidth) / 2;
+        adminTabsEl.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+    }
+
+    if (adminTab === 'groups')       renderAdminGroups();
+    else if (adminTab === 'home')    renderAdminHome();
+    else if (adminTab === 'calendar') renderAdminCalendarShared();
+    else                              renderAdminContent();
+}
+
+/* ---------- Админ: Группы ---------- */
+function renderAdminGroups() {
+    const body = document.getElementById('adminBody');
+    body.innerHTML = `
+        <section class="add-section">
+            <h3>➕ Добавить новую группу</h3>
+            <form id="addGroupForm">
+                <div class="admin-fields">
+                    <div class="a-field" style="max-width:110px">
+                        <label>Эмодзи</label>
+                        <input name="emoji" value="📁" maxlength="4">
+                    </div>
+                    <div class="a-field">
+                        <label>Название *</label>
+                        <input name="name" required maxlength="40" placeholder="Например: Ромашка">
+                    </div>
+                    <div class="a-field wide">
+                        <label>Возраст</label>
+                        <input name="age" maxlength="40" placeholder="Например: 5–6 лет" list="ageOptions">
+                        <datalist id="ageOptions">
+                            <option value="1–2 года"></option>
+                            <option value="2–3 года"></option>
+                            <option value="3–4 года"></option>
+                            <option value="4–5 лет"></option>
+                            <option value="5–6 лет"></option>
+                            <option value="6–7 лет"></option>
+                        </datalist>
+                    </div>
+                    <div class="a-field">
+                        <label>Цвет карточки</label>
+                        <div class="color-row">
+                            <select name="color" id="newColorSelect">
+                                ${COLOR_LIST.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}
+                            </select>
+                            <div class="color-preview c1" id="newColorPreview"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-actions">
+                    <button type="submit" class="btn primary">Добавить группу</button>
+                </div>
+            </form>
+        </section>
+        <h3 class="admin-section-title">Группы (${state.groups.length})</h3>
+        <div id="adminGroupsList"></div>
+    `;
+
+    const newSelect = document.getElementById('newColorSelect');
+    const newPreview = document.getElementById('newColorPreview');
+    const upd = () => { newPreview.className = 'color-preview ' + newSelect.value; };
+    newSelect.addEventListener('change', upd); upd();
+
+    document.getElementById('addGroupForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const form = e.target;
+        const fd = new FormData(form);
+        const name = String(fd.get('name') || '').trim();
+        if (!name) return;
+        state.groups.push({
+            name,
+            age: String(fd.get('age') || '').trim() || 'Возраст не указан',
+            emoji: String(fd.get('emoji') || '📁').trim() || '📁',
+            color: fd.get('color') || 'c1',
+            lessonSchedule: defaultLessonSchedule(),
+            weeklyThemes: [],
+            dailyRoutine: defaultDailyRoutine(),
+            artLiterature: [],
+            morningCircle: defaultMorningCircle()
+        });
+        saveState();
+        renderAdmin();
+    });
+
+    const list = document.getElementById('adminGroupsList');
+    if (!state.groups.length) {
+        list.innerHTML = `<div class="empty-msg">Пока нет ни одной группы.</div>`;
+        return;
+    }
+
+    state.groups.forEach((g, i) => {
+        const card = document.createElement('div');
+        card.className = 'admin-card';
+        card.dataset.sortableItem = '';
+        card.innerHTML = `
+            <div class="admin-card-head">
+                <span class="drag-handle" data-drag-handle title="Перетащите">⋮⋮</span>
+                <div class="admin-emoji">${escHtml(g.emoji)}</div>
+                <div class="admin-name">${escHtml(g.name)}</div>
+                <button class="icon-btn danger" data-act="del" title="Удалить">🗑</button>
+            </div>
+            <div class="admin-fields">
+                <div class="a-field" style="max-width:110px">
+                    <label>Эмодзи</label>
+                    <input data-f="emoji" value="${escHtml(g.emoji)}" maxlength="4">
+                </div>
+                <div class="a-field">
+                    <label>Название</label>
+                    <input data-f="name" value="${escHtml(g.name)}" maxlength="40">
+                </div>
+                <div class="a-field wide">
+                    <label>Возраст</label>
+                    <input data-f="age" value="${escHtml(g.age)}" maxlength="40">
+                </div>
+                <div class="a-field">
+                    <label>Цвет карточки</label>
+                    <div class="color-row">
+                        <select data-f="color">
+                            ${COLOR_LIST.map(c =>
+                                `<option value="${c.id}" ${c.id === g.color ? 'selected' : ''}>${c.name}</option>`
+                            ).join('')}
+                        </select>
+                        <div class="color-preview ${g.color}" data-role="preview"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-actions">
+                <button class="btn primary" data-act="save">Сохранить</button>
+                <button class="btn ghost" data-act="content">📚 Содержимое группы</button>
+                <span class="save-info" data-role="info"></span>
+            </div>
+        `;
+
+        const info = card.querySelector('[data-role="info"]');
+        const colorSelect = card.querySelector('[data-f="color"]');
+        const colorPreview = card.querySelector('[data-role="preview"]');
+        colorSelect.addEventListener('change', () => {
+            colorPreview.className = 'color-preview ' + colorSelect.value;
+        });
+
+        card.querySelector('[data-act="save"]').onclick = () => {
+            g.emoji = card.querySelector('[data-f="emoji"]').value.trim() || '📁';
+            g.name  = card.querySelector('[data-f="name"]').value.trim()  || 'Без названия';
+            g.age   = card.querySelector('[data-f="age"]').value.trim()   || 'Возраст не указан';
+            g.color = colorSelect.value;
+            saveState();
+            card.querySelector('.admin-emoji').textContent = g.emoji;
+            card.querySelector('.admin-name').textContent  = g.name;
+            info.textContent = 'Сохранено ✓';
+            setTimeout(() => { info.textContent = ''; }, 1800);
+        };
+        card.querySelector('[data-act="content"]').onclick = () => {
+            adminGroupId = i;
+            adminContentTab = 'schedule';
+            adminTab = 'content';
+            renderAdmin();
+        };
+        card.querySelector('[data-act="del"]').onclick = () => {
+            if (!confirm(`Удалить группу «${g.name}»?`)) return;
+            state.groups.splice(i, 1);
+            saveState();
+            renderAdmin();
+        };
+        card.querySelector('[data-f="emoji"]').addEventListener('input', e => {
+            card.querySelector('.admin-emoji').textContent = e.target.value || '📁';
+        });
+        card.querySelector('[data-f="name"]').addEventListener('input', e => {
+            card.querySelector('.admin-name').textContent = e.target.value || 'Без названия';
+        });
+        list.appendChild(card);
+    });
+
+    makeSortable(list, {
+        handleSelector: '[data-drag-handle]',
+        onReorder: (from, to) => {
+            state.groups.splice(to, 0, state.groups.splice(from, 1)[0]);
+            saveState();
+            renderAdminGroups();
+            toast('Порядок групп сохранён');
+        }
+    });
+}
+
+/* ---------- Админ: Главная ---------- */
+function renderAdminHome() {
+    const s = state.settings;
+    const body = document.getElementById('adminBody');
+    body.innerHTML = `
+        <div class="admin-card">
+            <div class="admin-card-head">
+                <div class="admin-emoji">🏠</div>
+                <div class="admin-name">Содержимое главной страницы</div>
+            </div>
+            <form id="homeForm">
+                <div class="admin-fields">
+                    <div class="a-field wide">
+                        <label>Название сада в шапке</label>
+                        <input name="schoolName" maxlength="80" value="${escHtml(s.schoolName)}">
+                    </div>
+                    <div class="a-field wide">
+                        <label>Подпись под названием сада</label>
+                        <input name="schoolSubtitle" maxlength="80" value="${escHtml(s.schoolSubtitle)}">
+                    </div>
+                    <div class="a-field wide">
+                        <label>Заголовок главной</label>
+                        <input name="pageTitle" maxlength="80" value="${escHtml(s.pageTitle)}">
+                    </div>
+                    <div class="a-field wide">
+                        <label>Подзаголовок</label>
+                        <input name="pageSubtitle" maxlength="140" value="${escHtml(s.pageSubtitle)}">
+                    </div>
+                </div>
+                <div class="admin-actions">
+                    <button type="submit" class="btn primary">Сохранить изменения</button>
+                    <span class="save-info" id="homeInfo"></span>
+                </div>
+            </form>
+        </div>
+    `;
+    const form = document.getElementById('homeForm');
+    const info = document.getElementById('homeInfo');
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        state.settings.schoolName     = form.schoolName.value.trim()     || 'СП ОДО ГБОУ школа 544';
+        state.settings.schoolSubtitle = form.schoolSubtitle.value.trim() || 'Кабинет старшего воспитателя';
+        state.settings.pageTitle      = form.pageTitle.value.trim()      || 'Группы детского сада';
+        state.settings.pageSubtitle   = form.pageSubtitle.value.trim()   || '';
+        saveState();
+        applySettingsToHeader();
+        info.textContent = 'Сохранено ✓';
+        setTimeout(() => { info.textContent = ''; }, 1800);
+    });
+}
+
+/* ---------- Админ: Содержимое групп ---------- */
+function renderAdminContent() {
+    const body = document.getElementById('adminBody');
+    if (!state.groups.length) {
+        body.innerHTML = `<div class="empty-msg">Сначала добавьте группы на вкладке «Группы».</div>`;
+        return;
+    }
+    if (adminGroupId >= state.groups.length) adminGroupId = 0;
+    const g = state.groups[adminGroupId];
+
+    const subTabs = [
+        ['schedule',      '📅 Расписания занятий'],
+        ['weeklyThemes',  '📖 Темы недели'],
+        ['dailyRoutine',  '🕐 Режим дня'],
+        ['artLiterature', '📚 Худож. литература'],
+        ['morningCircle', '🌅 Утренний круг']
+    ];
+
+    body.innerHTML = `
+        <div class="admin-card" style="border-top-color:#94A3B8;">
+            <div class="admin-fields">
+                <div class="a-field wide">
+                    <label>Выберите группу</label>
+                    <select id="groupPicker">
+                        ${state.groups.map((gr, i) =>
+                            `<option value="${i}" ${i === adminGroupId ? 'selected' : ''}>
+                                ${escHtml(gr.emoji)} ${escHtml(gr.name)} — ${escHtml(gr.age)}
+                            </option>`
+                        ).join('')}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="admin-nav" id="adminSubTabs">
+            ${subTabs.map(([k, lbl]) => `
+                <button data-ctab="${k}" class="${adminContentTab === k ? 'active' : ''}">${lbl}</button>
+            `).join('')}
+        </div>
+        <div id="adminContentBody"></div>
+    `;
+
+    const subTabsEl = document.getElementById('adminSubTabs');
+    makeDraggableScroller(subTabsEl);
+
+    document.getElementById('groupPicker').onchange = (e) => {
+        adminGroupId = Number(e.target.value);
+        renderAdminContent();
+    };
+
+    subTabsEl.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-ctab]');
+        if (!btn) return;
+        if (btn.dataset.ctab === adminContentTab) return;
+        adminContentTab = btn.dataset.ctab;
+        renderAdminContent();
+    });
+
+    if (adminContentTab === 'schedule')           renderAdminSchedule(g);
+    else if (adminContentTab === 'weeklyThemes')  renderAdminWeeklyThemes(g);
+    else if (adminContentTab === 'dailyRoutine')  renderAdminDailyRoutine(g);
+    else if (adminContentTab === 'artLiterature') renderAdminArtLiterature(g);
+    else                                           renderAdminMorningCircle(g);
+}
+
+/* --- Админ: расписание --- */
+function renderAdminSchedule(g) {
+    if (!Array.isArray(g.lessonSchedule) || !g.lessonSchedule.length) {
+        g.lessonSchedule = defaultLessonSchedule();
+    }
+    const box = document.getElementById('adminContentBody');
+    box.innerHTML = `
+        <div class="add-section">
+            <h3>📅 Расписание занятий по дням недели</h3>
+            <p style="color:#7f8c8d;font-size:13.5px;font-weight:600;margin-bottom:14px;">
+                Перетаскивайте занятия за ручку ⋮⋮, чтобы менять порядок внутри дня.
+            </p>
+            <div id="scheduleEditor"></div>
+        </div>
+    `;
+    const editor = document.getElementById('scheduleEditor');
+
+    g.lessonSchedule.forEach((d, di) => {
+        const card = document.createElement('div');
+        card.className = 'admin-card';
+        card.innerHTML = `
+            <div class="admin-card-head">
+                <div class="admin-emoji">📅</div>
+                <div class="admin-name">${escHtml(d.day)}</div>
+            </div>
+            <div class="sched-items" style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
+                ${(d.items || []).map((it, ii) => `
+                    <div class="sched-item" data-sortable-item style="display:flex;gap:8px;align-items:center;">
+                        <span class="drag-handle" data-drag-handle title="Перетащите">⋮⋮</span>
+                        <input type="text" data-di="${di}" data-ii="${ii}"
+                               value="${escHtml(it)}" maxlength="60"
+                               placeholder="Название занятия"
+                               style="flex:1;min-width:0;font-family:inherit;font-size:14.5px;font-weight:600;
+                                      color:#2c3e50;background:#f9fbfd;border:2px solid #e8edf4;
+                                      border-radius:11px;padding:10px 12px;outline:none;">
+                        <button class="icon-btn danger" data-del="${di}-${ii}" title="Удалить">✕</button>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="admin-actions">
+                <button class="btn ghost" data-add="${di}">+ Добавить занятие</button>
+            </div>
+        `;
+        editor.appendChild(card);
+    });
+
+    editor.querySelectorAll('input[data-di]').forEach(inp => {
+        inp.addEventListener('input', () => {
+            const di = Number(inp.dataset.di);
+            const ii = Number(inp.dataset.ii);
+            g.lessonSchedule[di].items[ii] = inp.value;
+            saveState();
+        });
+    });
+    editor.querySelectorAll('[data-del]').forEach(btn => {
+        btn.onclick = () => {
+            const [di, ii] = btn.dataset.del.split('-').map(Number);
+            g.lessonSchedule[di].items.splice(ii, 1);
+            saveState();
+            renderAdminSchedule(g);
+        };
+    });
+    editor.querySelectorAll('[data-add]').forEach(btn => {
+        btn.onclick = () => {
+            const di = Number(btn.dataset.add);
+            g.lessonSchedule[di].items.push('');
+            saveState();
+            renderAdminSchedule(g);
+            requestAnimationFrame(() => {
+                const inputs = editor.querySelectorAll(`input[data-di="${di}"]`);
+                const last = inputs[inputs.length - 1];
+                if (last) last.focus();
+            });
+        };
+    });
+
+    editor.querySelectorAll('.sched-items').forEach((boxItems) => {
+        makeSortable(boxItems, {
+            handleSelector: '[data-drag-handle]',
+            onReorder: (from, to) => {
+                const firstInput = boxItems.children[0]?.querySelector('input');
+                if (!firstInput) return;
+                const dayIdx = Number(firstInput.dataset.di);
+                const arr = g.lessonSchedule[dayIdx].items;
+                arr.splice(to, 0, arr.splice(from, 1)[0]);
+                saveState();
+
+                Array.from(boxItems.children).forEach((row, idx) => {
+                    const inp = row.querySelector('input');
+                    if (inp) inp.dataset.ii = idx;
+                    const del = row.querySelector('[data-del]');
+                    if (del) del.dataset.del = dayIdx + '-' + idx;
+                });
+            }
+        });
+    });
+}
+
+/* ================= АДМИН: ТЕМЫ НЕДЕЛИ ================= */
+function renderAdminWeeklyThemes(g) {
+    const box = document.getElementById('adminContentBody');
+    box.innerHTML = `
+        <section class="add-section">
+            <h3>➕ Добавить тему недели</h3>
+            <form id="addWeekForm" data-uid="new"></form>
+        </section>
+
+        <h3 class="admin-section-title">Темы недели (${g.weeklyThemes.length})</h3>
+        <div id="weeksList"></div>
+    `;
+
+    const addForm = document.getElementById('addWeekForm');
+    buildWeekForm(addForm, {
+        id: 'new',
+        month: '',
+        weekNumber: '',
+        dates: '',
+        dooTheme: '',
+        dooDescription: '',
+        ageSubtopics: [],
+        holidays: ''
+    }, g);
+
+    const submitRow = document.createElement('div');
+    submitRow.className = 'admin-actions';
+    submitRow.style.marginTop = '16px';
+    submitRow.innerHTML = `<button type="submit" class="btn primary">Добавить тему недели</button>`;
+    addForm.appendChild(submitRow);
+
+    addForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const data = collectWeekForm(addForm);
+        if (!data.dooTheme && !data.dooDescription) {
+            alert('Введите хотя бы тему ДОО или описание');
+            return;
+        }
+        data.id = uid();
+        g.weeklyThemes.push(data);
+        saveState();
+        renderAdminContent();
+        toast('Тема недели добавлена');
+    });
+
+    const list = document.getElementById('weeksList');
+    if (!g.weeklyThemes.length) {
+        list.innerHTML = `<div class="empty-msg">Тем недели пока нет.</div>`;
+        return;
+    }
+
+    g.weeklyThemes.forEach((t, ti) => {
+        const card = document.createElement('div');
+        card.className = 'admin-card';
+        card.dataset.sortableItem = '';
+        card.innerHTML = `
+            <div class="admin-card-head">
+                <span class="drag-handle" data-drag-handle title="Перетащите">⋮⋮</span>
+                <div class="admin-emoji">📖</div>
+                <div class="admin-name">
+                    ${escHtml(t.month || '')}${t.month && t.weekNumber ? ' · ' : ''}${escHtml(t.weekNumber || '')}
+                    ${t.dooTheme ? ' — ' + escHtml(t.dooTheme) : ''}
+                </div>
+                <button class="icon-btn danger" data-act="del" title="Удалить">🗑</button>
+            </div>
+            <form data-uid="${escHtml(t.id)}" class="week-edit-form"></form>
+            <div class="admin-actions" style="margin-top:16px;">
+                <button class="btn primary" data-act="save">Сохранить</button>
+                <span class="save-info" data-role="info"></span>
+            </div>
+        `;
+        const form = card.querySelector('.week-edit-form');
+        buildWeekForm(form, t, g);
+
+        const info = card.querySelector('[data-role="info"]');
+        card.querySelector('[data-act="save"]').onclick = () => {
+            const data = collectWeekForm(form);
+            if (!data.dooTheme && !data.dooDescription) {
+                alert('Введите хотя бы тему ДОО или описание');
+                return;
+            }
+            Object.assign(t, data);
+            saveState();
+            card.querySelector('.admin-name').innerHTML =
+                `${escHtml(t.month || '')}${t.month && t.weekNumber ? ' · ' : ''}${escHtml(t.weekNumber || '')}${t.dooTheme ? ' — ' + escHtml(t.dooTheme) : ''}`;
+            info.textContent = 'Сохранено ✓';
+            setTimeout(() => { info.textContent = ''; }, 1600);
+        };
+        card.querySelector('[data-act="del"]').onclick = () => {
+            if (!confirm('Удалить эту тему недели?')) return;
+            g.weeklyThemes.splice(ti, 1);
+            saveState();
+            renderAdminContent();
+        };
+        list.appendChild(card);
+    });
+
+    makeSortable(list, {
+        handleSelector: '[data-drag-handle]',
+        onReorder: (from, to) => {
+            g.weeklyThemes.splice(to, 0, g.weeklyThemes.splice(from, 1)[0]);
+            saveState();
+            renderAdminContent();
+            toast('Порядок тем сохранён');
+        }
+    });
+}
+
+function buildWeekForm(container, data, g) {
+    container.innerHTML = `
+        <div class="admin-fields">
+            <div class="a-field">
+                <label>Месяц (напр. СЕНТЯБРЬ)</label>
+                <input name="month" maxlength="40" value="${escHtml(data.month || '')}"
+                       list="monthList">
+            </div>
+            <div class="a-field">
+                <label>Номер недели (напр. 2 НЕДЕЛЯ)</label>
+                <input name="weekNumber" maxlength="40" value="${escHtml(data.weekNumber || '')}">
+            </div>
+            <div class="a-field">
+                <label>Даты (напр. 7.09 – 11.09)</label>
+                <input name="dates" maxlength="40" value="${escHtml(data.dates || '')}">
+            </div>
+        </div>
+
+        <datalist id="monthList">
+            ${MONTHS_RU_UPPER.map(m => `<option value="${m}"></option>`).join('')}
+        </datalist>
+
+        <div class="a-field wide" style="margin-bottom:12px;">
+            <label>Тема ДОО</label>
+            <input name="dooTheme" maxlength="200" value="${escHtml(data.dooTheme || '')}"
+                   placeholder="Например: Азбука комплексной безопасности">
+        </div>
+
+        <div class="a-field wide" style="margin-bottom:12px;">
+            <label>Описание темы ДОО</label>
+            <textarea name="dooDescription" class="tall" maxlength="20000"
+                      placeholder="Подробное описание темы недели">${escHtml(data.dooDescription || '')}</textarea>
+            <div class="char-counter" data-for="dooDesc">${(data.dooDescription || '').length} / 20000</div>
+        </div>
+
+        <div style="margin-bottom:12px;">
+            <label style="display:block;font-size:11px;font-weight:800;color:#7f8c8d;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px;">
+                Подтемы на возраст
+            </label>
+            <div class="age-subtopics" data-role="ages"></div>
+            <button type="button" class="btn ghost" data-role="add-age" style="margin-top:6px;">
+                + Добавить возраст
+            </button>
+        </div>
+
+        <div class="a-field wide">
+            <label>Дополнительные / региональные праздники</label>
+            <textarea name="holidays" maxlength="2000"
+                      placeholder="Например: 9 сентября — День плюшевого мишки">${escHtml(data.holidays || '')}</textarea>
+        </div>
+    `;
+
+    const descTA = container.querySelector('textarea[name="dooDescription"]');
+    const descCounter = container.querySelector('[data-for="dooDesc"]');
+    descTA.addEventListener('input', () => {
+        descCounter.textContent = `${descTA.value.length} / 20000`;
+    });
+
+    const agesBox = container.querySelector('[data-role="ages"]');
+
+    function addAgeRow(age) {
+        age = age || { age: '', subtopic: '', description: '' };
+        const row = document.createElement('div');
+        row.className = 'age-edit-row';
+        row.innerHTML = `
+            <div class="a-field">
+                <label>Возраст</label>
+                <input data-age="age" maxlength="60" value="${escHtml(age.age)}"
+                       placeholder="Например: 1 года – 3 лет">
+            </div>
+            <div class="a-field" style="grid-column: 2 / 3;">
+                <label>Подтема</label>
+                <input data-age="subtopic" maxlength="200" value="${escHtml(age.subtopic)}"
+                       placeholder="Например: Опасное — безопасное: что нельзя трогать?">
+                <label style="margin-top:8px;">Описание</label>
+                <textarea data-age="description" maxlength="20000"
+                          style="min-height:80px;"
+                          placeholder="Подробное описание подтемы">${escHtml(age.description)}</textarea>
+            </div>
+            <button type="button" class="icon-btn danger del-age" title="Удалить возраст">✕</button>
+        `;
+        row.querySelector('.del-age').onclick = () => row.remove();
+        agesBox.appendChild(row);
+    }
+
+    (data.ageSubtopics || []).forEach(a => addAgeRow(a));
+    container.querySelector('[data-role="add-age"]').onclick = () => {
+        addAgeRow();
+        const rows = agesBox.querySelectorAll('.age-edit-row');
+        const last = rows[rows.length - 1];
+        if (last) last.querySelector('input[data-age="age"]').focus();
+    };
+}
+
+function collectWeekForm(form) {
+    const get = n => (form.querySelector(`[name="${n}"]`)?.value || '').trim();
+    const ages = [];
+    form.querySelectorAll('.age-edit-row').forEach(row => {
+        const age = row.querySelector('[data-age="age"]').value.trim();
+        const subtopic = row.querySelector('[data-age="subtopic"]').value.trim();
+        const description = row.querySelector('[data-age="description"]').value.trim();
+        if (age || subtopic || description) {
+            ages.push({ age, subtopic, description });
+        }
+    });
+    return {
+        month: get('month'),
+        weekNumber: get('weekNumber'),
+        dates: get('dates'),
+        dooTheme: get('dooTheme'),
+        dooDescription: get('dooDescription'),
+        ageSubtopics: ages,
+        holidays: get('holidays')
+    };
+}
+
+/* --- Админ: режим дня --- */
+function renderAdminDailyRoutine(g) {
+    if (!Array.isArray(g.dailyRoutine)) g.dailyRoutine = defaultDailyRoutine();
+
+    const box = document.getElementById('adminContentBody');
+    box.innerHTML = `
+        <section class="add-section">
+            <h3>➕ Добавить пункт режима дня</h3>
+            <form id="addRoutineForm">
+                <div class="admin-fields">
+                    <div class="a-field">
+                        <label>Время (напр. 07:30–08:20)</label>
+                        <input name="time" required maxlength="30">
+                    </div>
+                    <div class="a-field wide">
+                        <label>Что происходит *</label>
+                        <input name="activity" required maxlength="300">
+                    </div>
+                </div>
+                <div class="admin-actions">
+                    <button type="submit" class="btn primary">Добавить</button>
+                </div>
+            </form>
+        </section>
+        <h3 class="admin-section-title">Режим дня (${g.dailyRoutine.length})</h3>
+        <div id="routineList"></div>
+    `;
+
+    document.getElementById('addRoutineForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        g.dailyRoutine.push({
+            id: uid(),
+            time:     String(fd.get('time') || '').trim(),
+            activity: String(fd.get('activity') || '').trim()
+        });
+        saveState();
+        renderAdminContent();
+    });
+
+    const list = document.getElementById('routineList');
+    if (!g.dailyRoutine.length) {
+        list.innerHTML = `<div class="empty-msg">Пунктов пока нет.</div>`;
+        return;
+    }
+
+    g.dailyRoutine.forEach(r => {
+        const card = document.createElement('div');
+        card.className = 'admin-card';
+        card.dataset.sortableItem = '';
+        card.innerHTML = `
+            <div class="admin-card-head">
+                <span class="drag-handle" data-drag-handle title="Перетащите">⋮⋮</span>
+                <div class="admin-emoji">🕐</div>
+                <div class="admin-name">${escHtml(r.time || '—')} — ${escHtml(r.activity || '')}</div>
+                <button class="icon-btn danger" data-act="del">🗑</button>
+            </div>
+            <div class="admin-fields">
+                <div class="a-field">
+                    <label>Время</label>
+                    <input data-f="time" value="${escHtml(r.time || '')}" maxlength="30">
+                </div>
+                <div class="a-field wide">
+                    <label>Действие</label>
+                    <input data-f="activity" value="${escHtml(r.activity || '')}" maxlength="300">
+                </div>
+            </div>
+            <div class="admin-actions">
+                <button class="btn primary" data-act="save">Сохранить</button>
+                <span class="save-info" data-role="info"></span>
+            </div>
+        `;
+        const info = card.querySelector('[data-role="info"]');
+        card.querySelector('[data-act="save"]').onclick = () => {
+            r.time     = card.querySelector('[data-f="time"]').value.trim();
+            r.activity = card.querySelector('[data-f="activity"]').value.trim();
+            saveState();
+            info.textContent = 'Сохранено ✓';
+            setTimeout(() => { info.textContent = ''; }, 1600);
+        };
+        card.querySelector('[data-act="del"]').onclick = () => {
+            if (!confirm('Удалить этот пункт?')) return;
+            const idx = g.dailyRoutine.indexOf(r);
+            if (idx >= 0) g.dailyRoutine.splice(idx, 1);
+            saveState();
+            renderAdminContent();
+        };
+        list.appendChild(card);
+    });
+
+    makeSortable(list, {
+        handleSelector: '[data-drag-handle]',
+        onReorder: (from, to) => {
+            g.dailyRoutine.splice(to, 0, g.dailyRoutine.splice(from, 1)[0]);
+            saveState();
+            renderAdminContent();
+            toast('Порядок пунктов сохранён');
+        }
+    });
+}
+
+/* ================= АДМИН: ХУДОЖ. ЛИТЕРАТУРА ================= */
+function renderAdminArtLiterature(g) {
+    if (!Array.isArray(g.artLiterature)) g.artLiterature = [];
+
+    const box = document.getElementById('adminContentBody');
+    box.innerHTML = `
+        <section class="add-section">
+            <h3>➕ Добавить месяц</h3>
+            <form id="addLitMonthForm">
+                <div class="admin-fields">
+                    <div class="a-field wide">
+                        <label>Название месяца (напр. СЕНТЯБРЬ (4 недели)) *</label>
+                        <input name="month" required maxlength="80" placeholder="Например: СЕНТЯБРЬ (4 недели)">
+                    </div>
+                </div>
+                <div class="admin-actions">
+                    <button type="submit" class="btn primary">Добавить месяц</button>
+                </div>
+            </form>
+        </section>
+        <h3 class="admin-section-title">Месяцы (${g.artLiterature.length})</h3>
+        <div id="litMonthsList"></div>
+    `;
+
+    document.getElementById('addLitMonthForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const month = String(fd.get('month') || '').trim();
+        if (!month) return;
+        g.artLiterature.push({ id: uid(), month, weeks: [] });
+        saveState();
+        renderAdminContent();
+        toast('Месяц добавлен');
+    });
+
+    const list = document.getElementById('litMonthsList');
+    if (!g.artLiterature.length) {
+        list.innerHTML = `<div class="empty-msg">Разделов пока нет.</div>`;
+        return;
+    }
+
+    g.artLiterature.forEach((m) => {
+        const card = document.createElement('div');
+        card.className = 'admin-card';
+        card.dataset.sortableItem = '';
+        card.innerHTML = `
+            <div class="admin-card-head">
+                <span class="drag-handle" data-drag-handle title="Перетащите">⋮⋮</span>
+                <div class="admin-emoji">📅</div>
+                <div class="admin-name">${escHtml(m.month || '—')}</div>
+                <button class="icon-btn danger" data-act="del-month" title="Удалить месяц">🗑</button>
+            </div>
+            <div class="a-field wide" style="margin-bottom:14px;">
+                <label>Название месяца</label>
+                <input data-f="month" value="${escHtml(m.month || '')}" maxlength="80">
+            </div>
+            <div style="font-size:12px;font-weight:800;color:#7f8c8d;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px;">
+                Недели месяца
+            </div>
+            <div class="lit-weeks-editor" data-role="weeks"></div>
+            <div class="admin-actions" style="margin-top:14px;">
+                <button class="btn ghost" data-act="add-week">+ Добавить неделю</button>
+                <button class="btn primary" data-act="save">Сохранить</button>
+                <span class="save-info" data-role="info"></span>
+            </div>
+        `;
+
+        const weeksBox = card.querySelector('[data-role="weeks"]');
+        const info = card.querySelector('[data-role="info"]');
+
+        const saveWeeksFromDOM = () => {
+            const rows = weeksBox.querySelectorAll('.lit-week-edit');
+            const arr = [];
+            rows.forEach(r => {
+                arr.push({
+                    id: r.dataset.weekId || uid(),
+                    week:  r.querySelector('[data-wf="week"]').value.trim(),
+                    theme: r.querySelector('[data-wf="theme"]').value.trim(),
+                    works: r.querySelector('[data-wf="works"]').value.trim(),
+                    tasks: r.querySelector('[data-wf="tasks"]').value.trim()
+                });
+            });
+            m.weeks = arr;
+        };
+
+        const renderWeeks = () => {
+            weeksBox.innerHTML = '';
+            const weeks = m.weeks || [];
+            if (!weeks.length) {
+                weeksBox.innerHTML = `<div class="empty-msg" style="padding:16px;">Недель пока нет. Нажмите «+ Добавить неделю».</div>`;
+                return;
+            }
+            weeks.forEach((w, wi) => {
+                const row = document.createElement('div');
+                row.className = 'lit-week-edit';
+                row.dataset.sortableItem = '';
+                row.dataset.weekId = w.id || uid();
+                row.innerHTML = `
+                    <span class="drag-handle" data-drag-handle title="Перетащите">⋮⋮</span>
+                    <div class="lit-week-num">${wi + 1}</div>
+                    <div class="a-field">
+                        <label>Неделя</label>
+                        <input data-wf="week" value="${escHtml(w.week || '')}" maxlength="40"
+                               placeholder="1-я неделя">
+                    </div>
+                    <div class="a-field">
+                        <label>Тема занятия</label>
+                        <input data-wf="theme" value="${escHtml(w.theme || '')}" maxlength="200"
+                               placeholder="«Здравствуй, детский сад!»">
+                    </div>
+                    <div class="a-field">
+                        <label>Произведения</label>
+                        <textarea data-wf="works" maxlength="2000"
+                                  placeholder="Автор и название произведения">${escHtml(w.works || '')}</textarea>
+                    </div>
+                    <div class="a-field">
+                        <label>Задачи</label>
+                        <textarea data-wf="tasks" maxlength="2000"
+                                  placeholder="Что развиваем, чему учим">${escHtml(w.tasks || '')}</textarea>
+                    </div>
+                    <button class="icon-btn danger" data-del-week title="Удалить неделю">✕</button>
+                `;
+                row.querySelector('[data-del-week]').onclick = () => {
+                    if (!confirm('Удалить эту неделю?')) return;
+                    saveWeeksFromDOM();
+                    m.weeks.splice(wi, 1);
+                    saveState();
+                    renderWeeks();
+                };
+                weeksBox.appendChild(row);
+            });
+
+            makeSortable(weeksBox, {
+                handleSelector: '[data-drag-handle]',
+                onReorder: (from, to) => {
+                    saveWeeksFromDOM();
+                    m.weeks.splice(to, 0, m.weeks.splice(from, 1)[0]);
+                    saveState();
+                    renderWeeks();
+                    toast('Порядок недель сохранён');
+                }
+            });
+        };
+
+        renderWeeks();
+
+        card.querySelector('[data-act="add-week"]').onclick = () => {
+            saveWeeksFromDOM();
+            m.weeks.push({
+                id: uid(),
+                week: `${(m.weeks.length + 1)}-я неделя`,
+                theme: '', works: '', tasks: ''
+            });
+            saveState();
+            renderWeeks();
+        };
+
+        card.querySelector('[data-act="save"]').onclick = () => {
+            saveWeeksFromDOM();
+            m.month = card.querySelector('[data-f="month"]').value.trim() || 'Месяц';
+            saveState();
+            card.querySelector('.admin-name').textContent = m.month;
+            info.textContent = 'Сохранено ✓';
+            setTimeout(() => { info.textContent = ''; }, 1600);
+        };
+
+        card.querySelector('[data-act="del-month"]').onclick = () => {
+            if (!confirm(`Удалить раздел «${m.month}»?`)) return;
+            const idx = g.artLiterature.indexOf(m);
+            if (idx >= 0) g.artLiterature.splice(idx, 1);
+            saveState();
+            renderAdminContent();
+        };
+
+        list.appendChild(card);
+    });
+
+    makeSortable(list, {
+        handleSelector: '[data-drag-handle]',
+        onReorder: (from, to) => {
+            g.artLiterature.splice(to, 0, g.artLiterature.splice(from, 1)[0]);
+            saveState();
+            renderAdminContent();
+            toast('Порядок месяцев сохранён');
+        }
+    });
+}
+
+/* ================= АДМИН: УТРЕННИЙ КРУГ ================= */
+function renderAdminMorningCircle(g) {
+    if (!Array.isArray(g.morningCircle)) g.morningCircle = [];
+
+    const box = document.getElementById('adminContentBody');
+    box.innerHTML = `
+        <section class="add-section">
+            <h3>➕ Добавить этап утреннего круга</h3>
+            <form id="addMcForm">
+                <div class="admin-fields">
+                    <div class="a-field wide">
+                        <label>Название этапа *</label>
+                        <input name="title" required maxlength="120"
+                               placeholder="Например: Приветствие">
+                    </div>
+                    <div class="a-field wide">
+                        <label>Описание</label>
+                        <textarea name="description" maxlength="4000"
+                                  placeholder="Что делаем на этом этапе, методические приёмы"></textarea>
+                    </div>
+                </div>
+                <div class="admin-actions">
+                    <button type="submit" class="btn primary">Добавить</button>
+                </div>
+            </form>
+        </section>
+        <h3 class="admin-section-title">Утренний круг (${g.morningCircle.length})</h3>
+        <div id="mcList"></div>
+    `;
+
+    document.getElementById('addMcForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const title = String(fd.get('title') || '').trim();
+        if (!title) return;
+        g.morningCircle.push({
+            id: uid(),
+            title,
+            description: String(fd.get('description') || '').trim()
+        });
+        saveState();
+        renderAdminContent();
+        toast('Этап добавлен');
+    });
+
+    const list = document.getElementById('mcList');
+    if (!g.morningCircle.length) {
+        list.innerHTML = `<div class="empty-msg">Утренний круг пуст.</div>`;
+        return;
+    }
+
+    g.morningCircle.forEach((it, idx) => {
+        const card = document.createElement('div');
+        card.className = 'admin-card';
+        card.dataset.sortableItem = '';
+        card.innerHTML = `
+            <div class="admin-card-head">
+                <span class="drag-handle" data-drag-handle title="Перетащите">⋮⋮</span>
+                <div class="admin-emoji">${idx + 1}</div>
+                <div class="admin-name">${escHtml(it.title || '—')}</div>
+                <div style="display:flex;gap:6px;">
+                    <button class="icon-btn" data-act="up"   title="Выше">▲</button>
+                    <button class="icon-btn" data-act="down" title="Ниже">▼</button>
+                    <button class="icon-btn danger" data-act="del" title="Удалить">🗑</button>
+                </div>
+            </div>
+            <div class="admin-fields">
+                <div class="a-field wide">
+                    <label>Название этапа</label>
+                    <input data-f="title" value="${escHtml(it.title || '')}" maxlength="120">
+                </div>
+                <div class="a-field wide">
+                    <label>Описание</label>
+                    <textarea data-f="description" maxlength="4000">${escHtml(it.description || '')}</textarea>
+                </div>
+            </div>
+            <div class="admin-actions">
+                <button class="btn primary" data-act="save">Сохранить</button>
+                <span class="save-info" data-role="info"></span>
+            </div>
+        `;
+        const info = card.querySelector('[data-role="info"]');
+        card.querySelector('[data-act="save"]').onclick = () => {
+            it.title       = card.querySelector('[data-f="title"]').value.trim() || 'Этап';
+            it.description = card.querySelector('[data-f="description"]').value.trim();
+            saveState();
+            card.querySelector('.admin-name').textContent = it.title;
+            info.textContent = 'Сохранено ✓';
+            setTimeout(() => { info.textContent = ''; }, 1600);
+        };
+        card.querySelector('[data-act="up"]').onclick = () => {
+            if (idx === 0) return;
+            [g.morningCircle[idx - 1], g.morningCircle[idx]] =
+                [g.morningCircle[idx], g.morningCircle[idx - 1]];
+            saveState();
+            renderAdminContent();
+        };
+        card.querySelector('[data-act="down"]').onclick = () => {
+            if (idx === g.morningCircle.length - 1) return;
+            [g.morningCircle[idx + 1], g.morningCircle[idx]] =
+                [g.morningCircle[idx], g.morningCircle[idx + 1]];
+            saveState();
+            renderAdminContent();
+        };
+        card.querySelector('[data-act="del"]').onclick = () => {
+            if (!confirm('Удалить этот этап?')) return;
+            g.morningCircle.splice(idx, 1);
+            saveState();
+            renderAdminContent();
+        };
+        list.appendChild(card);
+    });
+
+    makeSortable(list, {
+        handleSelector: '[data-drag-handle]',
+        onReorder: (from, to) => {
+            g.morningCircle.splice(to, 0, g.morningCircle.splice(from, 1)[0]);
+            saveState();
+            renderAdminContent();
+            toast('Порядок этапов сохранён');
+        }
+    });
+}
+
+/* ---------- Админ: Общий календарь ---------- */
+function renderAdminCalendarShared() {
+    if (!Array.isArray(state.calendar)) state.calendar = [];
+    const box = document.getElementById('adminBody');
+    const sorted = [...state.calendar].sort((a,b) => (a.date || '').localeCompare(b.date || ''));
+
+    box.innerHTML = `
+        <div class="cal-badge" style="margin-bottom:20px;">
+            🌍 Один календарь — одинаково для всех групп. Заполняется один раз.
+        </div>
+
+        <section class="add-section">
+            <h3>➕ Добавить событие</h3>
+            <form id="addEventForm">
+                <div class="admin-fields">
+                    <div class="a-field" style="max-width:180px">
+                        <label>Дата</label>
+                        <input name="date" type="date" value="${todayISO()}">
+                    </div>
+                    <div class="a-field wide">
+                        <label>Название *</label>
+                        <input name="title" required maxlength="80" placeholder="Например: Осенний утренник">
+                    </div>
+                    <div class="a-field wide">
+                        <label>Цвет текста события</label>
+                        <div class="palette" id="newEventPalette">
+                            ${EVENT_PALETTE.map(col => `
+                                <div class="swatch ${col === EVENT_PALETTE[0] ? 'selected' : ''}"
+                                     data-color="${col}" style="background:${col}"></div>
+                            `).join('')}
+                            <label class="color-custom-wrap">
+                                <input type="color" id="newEventCustom" value="${EVENT_PALETTE[0]}">
+                                <span>Свой</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-actions">
+                    <button type="submit" class="btn primary">Добавить</button>
+                </div>
+            </form>
+        </section>
+
+        <h3 class="admin-section-title">События (${state.calendar.length})</h3>
+        <div id="eventsList"></div>
+    `;
+
+    let newColor = EVENT_PALETTE[0];
+    const newPal = document.getElementById('newEventPalette');
+    newPal.querySelectorAll('.swatch').forEach(sw => {
+        sw.onclick = () => {
+            newColor = sw.dataset.color;
+            newPal.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
+            sw.classList.add('selected');
+            document.getElementById('newEventCustom').value = newColor;
+        };
+    });
+    document.getElementById('newEventCustom').oninput = (e) => {
+        newColor = e.target.value;
+        newPal.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
+    };
+
+    document.getElementById('addEventForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        state.calendar.push({
+            id: uid(),
+            date:  fd.get('date') || todayISO(),
+            title: String(fd.get('title') || '').trim(),
+            color: newColor
+        });
+        saveState();
+        renderAdminCalendarShared();
+    });
+
+    const list = document.getElementById('eventsList');
+    if (!sorted.length) {
+        list.innerHTML = `<div class="empty-msg">Событий пока нет.</div>`;
+        return;
+    }
+
+    sorted.forEach(ev => {
+        const card = document.createElement('div');
+        card.className = 'admin-card';
+        card.dataset.sortableItem = '';
+        card.innerHTML = `
+            <div class="admin-card-head">
+                <span class="drag-handle" data-drag-handle title="Перетащите">⋮⋮</span>
+                <div class="admin-emoji" style="background:#fff;border:2px solid #e8edf4;font-size:22px;font-weight:900;color:${ev.color};">🗓</div>
+                <div class="admin-name" style="color:${ev.color};">${escHtml(ev.title)}</div>
+                <button class="icon-btn danger" data-act="del">🗑</button>
+            </div>
+            <div class="admin-fields">
+                <div class="a-field" style="max-width:180px">
+                    <label>Дата</label>
+                    <input data-f="date" type="date" value="${escHtml(ev.date || '')}">
+                </div>
+                <div class="a-field wide">
+                    <label>Название</label>
+                    <input data-f="title" value="${escHtml(ev.title || '')}" maxlength="80">
+                </div>
+                <div class="a-field wide">
+                    <label>Цвет текста</label>
+                    <div class="palette" data-palette-for="${ev.id}">
+                        ${EVENT_PALETTE.map(col => `
+                            <div class="swatch ${col === ev.color ? 'selected' : ''}"
+                                 data-color="${col}" style="background:${col}"></div>
+                        `).join('')}
+                        <label class="color-custom-wrap">
+                            <input type="color" class="ev-custom" value="${ev.color}">
+                            <span>Свой</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-actions">
+                <button class="btn primary" data-act="save">Сохранить</button>
+                <span class="save-info" data-role="info"></span>
+            </div>
+        `;
+
+        const info = card.querySelector('[data-role="info"]');
+        const pal = card.querySelector(`[data-palette-for="${ev.id}"]`);
+        let curColor = ev.color;
+        pal.querySelectorAll('.swatch').forEach(sw => {
+            sw.onclick = () => {
+                curColor = sw.dataset.color;
+                pal.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
+                sw.classList.add('selected');
+                pal.querySelector('.ev-custom').value = curColor;
+            };
+        });
+        pal.querySelector('.ev-custom').oninput = (e) => {
+            curColor = e.target.value;
+            pal.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
+        };
+
+        card.querySelector('[data-act="save"]').onclick = () => {
+            ev.date  = card.querySelector('[data-f="date"]').value;
+            ev.title = card.querySelector('[data-f="title"]').value.trim();
+            ev.color = curColor;
+            saveState();
+            card.querySelector('.admin-emoji').style.color = curColor;
+            card.querySelector('.admin-name').style.color = curColor;
+            info.textContent = 'Сохранено ✓';
+            setTimeout(() => { info.textContent = ''; }, 1600);
+        };
+        card.querySelector('[data-act="del"]').onclick = () => {
+            if (!confirm('Удалить это событие?')) return;
+            const idx = state.calendar.indexOf(ev);
+            if (idx >= 0) state.calendar.splice(idx, 1);
+            saveState();
+            renderAdminCalendarShared();
+        };
+        list.appendChild(card);
+    });
+
+    makeSortable(list, {
+        handleSelector: '[data-drag-handle]',
+        onReorder: (from, to) => {
+            const src = sorted[from];
+            const dst = sorted[to];
+            const iSrc = state.calendar.indexOf(src);
+            const iDst = state.calendar.indexOf(dst);
+            state.calendar.splice(iSrc, 1);
+            state.calendar.splice(iDst, 0, src);
+            saveState();
+            renderAdminCalendarShared();
+            toast('Порядок событий сохранён');
+        }
+    });
+}
+
+/* ============================================================
+   РОУТЕР
+   ============================================================ */
+function router() {
+    const hash = location.hash.replace(/^#\/?/, '');
+    const parts = hash.split('/').filter(Boolean);
+
+    document.getElementById('homeView').style.display  = 'none';
+    document.getElementById('groupView').style.display = 'none';
+    document.getElementById('adminView').style.display = 'none';
+
+    if (parts[0] === 'group' && parts[1] !== undefined) {
+        const prevGroupId = currentGroupId;
+        const prevTab = currentGroupTab;
+        currentGroupId = Number(parts[1]) || 0;
+        currentGroupTab = parts[2] || 'schedule';
+        if (!GROUP_TABS.find(([k]) => k === currentGroupTab)) currentGroupTab = 'schedule';
+
+        // Сброс фильтра при смене группы или вкладки
+        if (prevGroupId !== currentGroupId || prevTab !== currentGroupTab) {
+            currentMonthFilter = 'all';
+        }
+
+        if (currentGroupId >= state.groups.length) { location.hash = '#/'; return; }
+        document.getElementById('groupView').style.display = 'block';
+        renderGroupPage();
+        window.scrollTo(0, 0);
+    } else if (parts[0] === 'admin') {
+        if (!isAdmin()) { showLogin(); location.hash = '#/'; return; }
+        document.getElementById('adminView').style.display = 'block';
+        renderAdmin();
+        window.scrollTo(0, 0);
+    } else {
+        document.getElementById('homeView').style.display = 'block';
+        renderHome();
+        window.scrollTo(0, 0);
+    }
+
+    updateHeaderAuth();
+}
+
+function showLogin() {
+    document.getElementById('loginOverlay').classList.add('active');
+    document.getElementById('loginError').textContent = '';
+    document.getElementById('loginPassword').value = '';
+    setTimeout(() => document.getElementById('loginPassword').focus(), 100);
+}
+function hideLogin() { document.getElementById('loginOverlay').classList.remove('active'); }
+
+document.getElementById('loginForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const pwd = document.getElementById('loginPassword').value;
+    if (pwd === ADMIN_PASSWORD) {
+        authToken = 'tok_' + Date.now();
+        sessionStorage.setItem(TOKEN_KEY, authToken);
+        hideLogin();
+        location.hash = '#/admin';
+        router();
+    } else {
+        document.getElementById('loginError').textContent = 'Неверный пароль';
+        document.getElementById('loginPassword').value = '';
+        document.getElementById('loginPassword').focus();
+    }
+});
+document.getElementById('loginOverlay').addEventListener('click', e => {
+    if (e.target.id === 'loginOverlay') hideLogin();
+});
+
+function logoutAndReturnHome() {
+    authToken = null;
+    sessionStorage.removeItem(TOKEN_KEY);
+    adminTab = 'groups';
+    adminContentTab = 'schedule';
+    location.hash = '#/';
+    router();
+    toast('Вы вышли из админ-панели');
+}
+
+document.getElementById('userBtn').addEventListener('click', () => {
+    if (isAdmin()) location.hash = '#/admin';
+    else showLogin();
+});
+document.getElementById('logoutHeaderBtn').addEventListener('click', logoutAndReturnHome);
+document.getElementById('logoBtn').addEventListener('click', () => { location.hash = '#/'; });
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { hideLogin(); closeEventModal(); closeModal(); }
+});
+function closeModal() { document.getElementById('modal').classList.remove('active'); }
+
+/* ============================================================
+   ЗАЩИТА ОТ КОПИРОВАНИЯ КОНТЕНТА
+   ============================================================ */
+(function protectContent() {
+    const EDITABLE_SEL = 'input, textarea, select, [contenteditable="true"]';
+
+    const inEditable = (e) => {
+        const t = e.target;
+        if (!t) return false;
+        if (t.isContentEditable) return true;
+        const tag = (t.tagName || '').toLowerCase();
+        if (tag === 'input' || tag === 'textarea' || tag === 'select') return true;
+        return !!(t.closest && t.closest(EDITABLE_SEL));
+    };
+
+    document.addEventListener('selectstart', e => {
+        if (!inEditable(e)) e.preventDefault();
+    }, true);
+
+    const blockClipboard = (e) => {
+        if (inEditable(e)) return;
+        e.preventDefault();
+        try {
+            if (e.clipboardData) e.clipboardData.setData('text/plain', '');
+        } catch (_) {}
+        return false;
+    };
+    document.addEventListener('copy',  blockClipboard, true);
+    document.addEventListener('cut',   blockClipboard, true);
+    document.addEventListener('paste', blockClipboard, true);
+
+    document.addEventListener('contextmenu', e => {
+        if (!inEditable(e)) e.preventDefault();
+    }, true);
+
+    document.addEventListener('dragstart', e => {
+        if (!inEditable(e)) e.preventDefault();
+    }, true);
+    document.addEventListener('drop', e => {
+        if (!inEditable(e)) e.preventDefault();
+    }, true);
+
+    document.addEventListener('keydown', e => {
+        const k = (e.key || '').toLowerCase();
+        const mod = e.ctrlKey || e.metaKey;
+
+        if (inEditable(e) && mod && ['c', 'v', 'x', 'a', 'z', 'y'].includes(k)) return;
+
+        if (e.key === 'F12') { e.preventDefault(); return false; }
+
+        if (mod) {
+            if (['c', 'x', 'a', 'u', 's', 'p'].includes(k)) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.shiftKey && ['i', 'j', 'c', 'k'].includes(k)) {
+                e.preventDefault();
+                return false;
+            }
+        }
+        if (e.ctrlKey && k === 'insert') { e.preventDefault(); return false; }
+        if (e.shiftKey && k === 'insert' && !inEditable(e)) { e.preventDefault(); return false; }
+    }, true);
+
+    document.addEventListener('mousedown', e => {
+        if (e.detail > 1 && !inEditable(e)) e.preventDefault();
+    }, true);
+})();
+
+window.addEventListener('hashchange', router);
+router();
+</script>
+
+</body>
+</html>
